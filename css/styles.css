@@ -1,0 +1,6 @@
+
+.contenedor__password{
+    display: flex;
+    align-content: flex-start;
+    justify-content: end;
+}
