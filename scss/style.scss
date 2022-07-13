@@ -1,0 +1,17 @@
+@import "footeryheader";
+@import "mediaquerry";
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+/* ----------------------------------- I N D E X ------------------------------------------------ */
+
+.contenedor__password{
+    display: flex;
+    align-content: flex-start;
+    justify-content: end;
+}
