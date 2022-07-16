@@ -48,12 +48,13 @@ let caballoblanco;
 
 
 
+let palabraoculta = "aquiles" /* || "Aquiles" */
 
-    let palabraoculta = "aquiles" && "Aquiles"
-do{ palabraocultausuario= prompt("Ultima!, Busca la palabra Oculta !!")
-    {if (palabraoculta = palabraocultausuario) { "¡ Aquiles Bailoyo !"}
-    else{alert("mira un poco mas arriba")}; }  
-}while(palabraoculta != "aquiles" && "Aquiles");
+do{ palabraocultausuario= prompt("Ultima!, Busca la palabra Oculta !!");
+
+    if (palabraoculta = palabraocultausuario) { "¡ Aquiles Bailoyo !"}
+    else {alert("mira un poco mas arriba")};
+}while(palabraoculta != "aquiles" /* || "Aquiles" */);
 
 
 
