@@ -2,10 +2,10 @@
 @import "mediaquerry";
 
 
-*{
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;    
+    box-sizing: border-box;
 }
 
 /* ----------------------------------- I N D E X ------------------------------------------------ */
@@ -17,11 +17,11 @@
 } */
 
 body {
-    background-color:rgba(255, 228, 196, 0.514) !important;
+    background-color: rgba(255, 228, 196, 0.514) !important;
 }
 
 
-.showcase__bienvenida{
+.showcase__bienvenida {
     margin-top: 2rem;
     width: 95%;
     margin-right: auto;
@@ -29,44 +29,119 @@ body {
     text-align: center;
 }
 
-.showcase__libros{
+.showcase__libros {
     @extend .showcase__bienvenida;
     margin-bottom: 2rem;
 }
 
-.carousel-inner img{
+.carousel-inner img {
     height: 25rem;
-    width: 17rem !important; 
+    width: 17rem !important;
     margin-right: auto;
     margin-left: auto;
 }
 
-.carousel-inner h5{
+.carousel-inner h5 {
     text-align: left;
 }
 
-.carousel-inner p{
+.carousel-inner p {
     text-align: left;
     max-width: 25%;
 }
 
-.carousel__btn{
+.carousel__btn {
     text-align: left;
 }
 
-.carousel__btn button{
+.carousel__btn button {
     text-align: left;
     border-radius: 4px;
     padding: 0.3rem;
     border: none;
-    background-color: rgb(116, 158, 216);;
+    background-color: rgb(116, 158, 216);
+    ;
     color: white;
-    text-shadow: 1px 1px 0px rgba(0,0,0,1);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.46);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.46);
 }
 
 
-.showcase__banner{
+.showcase__banner {
     @extend .showcase__bienvenida;
     margin-bottom: 2rem;
+}
+
+
+/* carrousel propio */
+
+
+.carrousel {
+    @extend .showcase__banner;
+    max-width: 120em;
+    padding: 2em;
+    color: #393939;
+    transition: all 0.4s ease;
+    border-radius: 1em;
+    background-color: #ececec;
+    box-shadow: 1em 1em 2em #c9c9c9, -1em -1em 2em #ffffff, inset 0 0 0 transparent, inset 0 0 0 transparent;
+    overflow: hidden;
+    margin-bottom: 10rem;
+    display: flex;
+}
+
+.carrousel h2 {
+    margin-bottom: 1rem;
+}
+
+.carrousel .grande {
+    width: 200%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    color: #393939;
+    transition: all 0.4s ease;
+    border-radius: 1em;
+    background-color: #ececec;
+    padding: 2em;
+    transition: all 0.5s ease;
+    transform: translateX(0%);
+}
+
+.carrousel .img {
+    width: calc(100% / 3);
+    min-height: 10vh;
+    max-height: 60vh;
+    color: #393939;
+    transition: all 0.4s ease;
+    border-radius: 1em;
+    background-color: #ececec;
+    box-shadow: 1em 1em 2em #c9c9c9, -1em -1em 2em #ffffff, inset 0 0 0 transparent, inset 0 0 0 transparent;
+    margin-right: 2.5rem;
+}
+
+.carrousel .puntos {
+    width: 100%;
+    margin: 1em 0 0;
+    padding: 0.4em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrousel .punto {
+    width: 2em;
+    height: 2em;
+    margin: 1em 1em 0;
+    color: #393939;
+    transition: all 0.4s ease;
+    border-radius: 1em;
+    background-color: #ececec;
+    box-shadow: 0.6em 0.6em 1.2em #c9c9c9, -0.6em -0.6em 1.2em #ffffff, inset 0 0 0 transparent, inset 0 0 0 transparent;
+}
+
+.carrousel .punto.activo {
+    background-color: lightblue;
 }
