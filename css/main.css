@@ -1,5 +1,5 @@
 header {
-  background-color: rgba(192, 192, 192, 0.911);
+  background-color: #aaaaaa;
   height: 5rem; }
 
 header nav section {
@@ -45,11 +45,43 @@ header nav section {
     justify-content: end;
 } */
 body {
-  background-color: #8a8a8a; }
+  background-color: rgba(255, 228, 196, 0.514) !important; }
 
-.sowcase__bienvenida {
+.showcase__bienvenida, .showcase__libros, .showcase__banner {
   margin-top: 2rem;
   width: 95%;
   margin-right: auto;
   margin-left: auto;
   text-align: center; }
+
+.showcase__libros {
+  margin-bottom: 2rem; }
+
+.carousel-inner img {
+  height: 25rem;
+  width: 17rem !important;
+  margin-right: auto;
+  margin-left: auto; }
+
+.carousel-inner h5 {
+  text-align: left; }
+
+.carousel-inner p {
+  text-align: left;
+  max-width: 25%; }
+
+.carousel__btn {
+  text-align: left; }
+
+.carousel__btn button {
+  text-align: left;
+  border-radius: 4px;
+  padding: 0.3rem;
+  border: none;
+  background-color: #749ed8;
+  color: white;
+  text-shadow: 1px 1px 0px black;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.46); }
+
+.showcase__banner {
+  margin-bottom: 2rem; }

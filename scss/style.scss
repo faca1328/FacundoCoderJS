@@ -17,14 +17,56 @@
 } */
 
 body {
-    background-color: rgb(138, 138, 138);
+    background-color:rgba(255, 228, 196, 0.514) !important;
 }
 
 
-.sowcase__bienvenida{
+.showcase__bienvenida{
     margin-top: 2rem;
     width: 95%;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
+}
+
+.showcase__libros{
+    @extend .showcase__bienvenida;
+    margin-bottom: 2rem;
+}
+
+.carousel-inner img{
+    height: 25rem;
+    width: 17rem !important; 
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.carousel-inner h5{
+    text-align: left;
+}
+
+.carousel-inner p{
+    text-align: left;
+    max-width: 25%;
+}
+
+.carousel__btn{
+    text-align: left;
+}
+
+.carousel__btn button{
+    text-align: left;
+    border-radius: 4px;
+    padding: 0.3rem;
+    border: none;
+    background-color: rgb(116, 158, 216);;
+    color: white;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.46);
+}
+
+
+.showcase__banner{
+    @extend .showcase__bienvenida;
+    margin-bottom: 2rem;
 }
