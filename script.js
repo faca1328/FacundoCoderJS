@@ -1,4 +1,4 @@
-
+/* 
 let nombreusuario = prompt("ingresa tu Nombre")
 
 alert("Bienvenido/a " + nombreusuario)
@@ -28,15 +28,15 @@ let caballoblanco;
     do {caballoblanco = prompt("De que color es el caballo blanco de San Martin ?" + "\nTe dejo opciones para que no sea tan dificil!" + "\n 1) negro  2) blanco  3) cian");
 
         switch (caballoblanco) {
-        case "negro" /* && "1" && "Negro" */:
+        case "negro" :
             alert("cerca pero no");
             break;
 
-        case "blanco" /* && "2" && "Blanco" */:
+        case "blanco" :
             alert("correcto !");
             break;
 
-        case "cian" /* && "3" && "Cian" */:
+        case "cian" :
             alert("really? un caballo cian?");
             break;
 
@@ -44,19 +44,19 @@ let caballoblanco;
             alert("Error");
             break; 
         }
-    } while (caballoblanco != "blanco" /* && "2" && "Blanco" */);
+    } while (caballoblanco != "blanco" );
+ */
 
-
-
-let palabraoculta = "aquiles" /* || "Aquiles" */
+/* 
+let palabraoculta = "aquiles"
 
 do{ palabraocultausuario= prompt("Ultima!, Busca la palabra Oculta !!");
 
     if (palabraoculta = palabraocultausuario) { "¡ Aquiles Bailoyo !"}
     else {alert("mira un poco mas arriba")};
-}while(palabraoculta != "aquiles" /* || "Aquiles" */);
+}while(palabraoculta != "aquiles" );
 
-
+ */
 
 
         

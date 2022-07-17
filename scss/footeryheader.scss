@@ -1,0 +1,48 @@
+
+
+header {
+    background-color: rgba(192, 192, 192, 0.911);
+    height: 5rem;
+}
+
+header nav section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.nav__logo{
+    height: 4rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+
+.nav__login{
+    @extend .btn__lupa;
+    border-radius: 4px;
+    height: 2.3rem;
+}
+
+
+.btn__lupa{
+    border-radius: 18px;
+    border: none;
+    padding: 0 0.5rem;
+    transition: 0.5s;
+}
+
+.btn__lupa:hover{
+    box-shadow: 0px 0px 0px 0.35rem rgb(116, 158, 216);
+}
+
+.nav__carrito{
+    padding: 0.5rem;
+    color: black
+}
+
+.nav__carrito:hover{
+    color: rgb(1, 55, 126);
+}
