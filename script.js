@@ -23,6 +23,16 @@ const libreria = [
     new libro("piense y hagase rico", "napoleon hill", "desarrollo personal", 2300)
 ];
 
+function mostrar(libreria){
+    let info = "" ;
+
+    libreria.foreach(elemento=>{
+        info+= "Titulo: "+ elemento.titulo+ "\nAutor: "+elemento.autor+"\nPrecio: $"+elemento.precio+".- \n\n"
+    });
+    return info;
+}
+
+
 let buscar = true;
 
 while (buscar){
@@ -35,8 +45,8 @@ while (buscar){
     switch(buscador.toLowerCase()){
         case "fantasia" :
             const filtrado=libreria.filter(elemento => elemento.genero == "fantasia");
-            alert(filtrado);
-
+            alert(mostrar(filtrado));
+            
 
 /*             let filtrado = libreria.filter((libro)=>libro.genero.toLowerCase().includes(buscador.toLowerCase()));
             function mostrar (array){
@@ -51,7 +61,8 @@ while (buscar){
 
         case "desarrollo personal" :
             const filtrado2=libreria.filter(elemento => elemento.genero == "desarrollo personal");
-            alert(filtrado2);
+            //alert(mostrar(filtrado2));
+            console.log(filtrado2);
             break;
 
         default:
@@ -71,7 +82,7 @@ while (buscar){
 
 
 
-/* Codigo de entregas anteriores 17/7/22 */
+/* --------   Codigo de entregas anteriores 17/7/22    ----------- */
 
 /* 
 let nombreusuario = prompt("ingresa tu Nombre")
