@@ -1,3 +1,4 @@
+
 class libro {
 
     constructor(titulo,autor,genero,precio){
@@ -9,30 +10,123 @@ class libro {
 }
 
 const libreria = [
-    new libro("la poesia de adolfo becquer", "adolfo becquer" , "desarrollo personal" , 800),
-    new libro("eragon", "christopher paolin", "fantasia", 2300),
-    new libro("cronicas de la torre 1", "laura gallego garcia", "fantasia", 1250),
-    new libro("el demonio de arbennios", "bernard torello", "fantasia", 1800),
-    new libro("fuego y sangre", "george rr martin", "fantasia", 4700),
-    new libro("mareas de medianoche", "steven erikson", "fantasia", 980),
-    new libro("habitos atomicos", "james clear", "desarrollo personal", 1300),
-    new libro("harry potter y el caliz de fuego", "jk rowling", "fantasia", 2100),
-    new libro("kings of the wilds", "nicholas eames", "fantasia", 1999),
-    new libro("el señor de los anillos 1", "jrr tolkien" , "fantasia", 2100),
-    new libro("padre rico padre pobre", "robert t kiyosaki", "desarrollo personal", 3000),
-    new libro("piense y hagase rico", "napoleon hill", "desarrollo personal", 2300)
+    new libro("La poesia de adolfo becquer", "Adolfo Becquer" , "desarrollo personal" , 800),
+    new libro("Eragon", "Christopher Paolin", "fantasia", 2300),
+    new libro("Cronicas de la torre 1", "Laura Gallego Garcia", "fantasia", 1250),
+    new libro("El demonio de arbennios", "Bernard Torello", "fantasia", 1800),
+    new libro("Fuego y sangre", "Reorge RR Martin", "fantasia", 4700),
+    new libro("Mareas de medianoche", "Steven Erikson", "fantasia", 980),
+    new libro("Habitos atomicos", "James Clear", "desarrollo personal", 1300),
+    new libro("Harry potter y el caliz de fuego", "JK Rowling", "fantasia", 2100),
+    new libro("Kings of the wilds", "Nicholas Eames", "fantasia", 1999),
+    new libro("El señor de los anillos 1", "JRR Tolkien" , "fantasia", 2100),
+    new libro("Padre rico padre pobre", "Robert T Kiyosaki", "desarrollo personal", 3000),
+    new libro("Piense y hagase rico", "Napoleon Hill", "desarrollo personal", 2300)
 ];
 
 function mostrar(libreria){
     let info = "" ;
 
-    libreria.foreach(elemento=>{
+    libreria.forEach(elemento=>{
         info+= "Titulo: "+ elemento.titulo+ "\nAutor: "+elemento.autor+"\nPrecio: $"+elemento.precio+".- \n\n"
     });
     return info;
 }
 
 
+
+//------------- C A R R I T O ---------//
+
+const aniadiralcarritokotw = document.querySelector(".btnkotw");
+
+
+aniadiralcarritokotw.addEventListener("click", aniadirclickeado);
+
+
+function aniadirclickeado(event){
+    const button = event.target;
+    const item = button.closest(".itemclickeado");
+    
+
+    const itemtitulo= item.querySelector(".item-titulo").textContent;
+
+    const preciolibroclickeado = (libreria.filter(elemento => elemento.titulo == itemtitulo));
+    // ¿COMO HAGO QUE ESTO TERMINE EN UNA FUNCION QUE ME TIRE EL PRECIO DESDE EL ARRAY?
+
+
+    console.log(itemtitulo,preciolibroclickeado);
+}
+
+
+
+/* ---- carrousel del index ---- */
+
+const grande    = document.querySelector('.grande')
+const punto     = document.querySelectorAll('.punto')
+
+punto.forEach( ( cadaPunto , i )=> {
+    punto[i].addEventListener('click',()=>{
+
+        
+        let posicion  = i
+        
+        let operacion = posicion * -50
+
+        
+        grande.style.transform = `translateX(${ operacion }%)`
+
+        
+        punto.forEach( ( cadaPunto , i )=>{
+            
+            punto[i].classList.remove('activo')
+        })
+        
+        punto[i].classList.add('activo')
+
+    })
+})
+        
+
+
+
+// -------- HACER QUE LAS TARJETAS DE LOS CARROUSELES SE DEN VUELTA ------------//
+
+/* 
+const elseñordelosanillos = document.getElementById(elseñordelosanillos);
+
+const kingsofthewild = document.getElementById(kingsofthewild);
+
+const eragon = document.getElementById(eragon);
+
+const harrypotter = document.getElementById(harrypotter);
+
+const cronicasdelastorre = document.getElementById(cronicasdelastorre);
+
+const eldemoniodearbenninos = document.getElementById(eldemoniodearbenninos);
+
+const fuegoysangre = document.getElementById(fuegoysangre);
+
+const mareasdemedianoche = document.getElementById(mareasdemedianoche);
+
+
+eragon.addEventListener("click") */
+
+// Agregar el elemmento hiden:  http://chuwiki.chuidiang.org/index.php?title=Cambiar_elementos_al_hacer_click
+
+
+
+
+
+
+
+
+
+//----------------------------------- E N T R E G A S ----------------------------------------------//
+
+
+
+// Entrega 18/07
+/* 
 let buscar = true;
 
 while (buscar){
@@ -46,23 +140,11 @@ while (buscar){
         case "fantasia" :
             const filtrado=libreria.filter(elemento => elemento.genero == "fantasia");
             alert(mostrar(filtrado));
-            
-
-/*             let filtrado = libreria.filter((libro)=>libro.genero.toLowerCase().includes(buscador.toLowerCase()));
-            function mostrar (array){
-                let info = " ";
-                array.foreach(element=>{
-                    info+= "Titulo: "+element.titulo+"\nAutor: "+element.autor+"\nPrecio: $"+element.precio+"\n\n"
-                })
-                return info;
-            }
-            alert(mostrar(filtrado(buscador,libreria))); */
             break;
 
         case "desarrollo personal" :
             const filtrado2=libreria.filter(elemento => elemento.genero == "desarrollo personal");
-            //alert(mostrar(filtrado2));
-            console.log(filtrado2);
+            alert(mostrar(filtrado2));
             break;
 
         default:
@@ -71,13 +153,7 @@ while (buscar){
     }
 
     
-}
-
-
-
-
-
-
+} */
 
 
 
@@ -133,36 +209,3 @@ let caballoblanco;
     } while (caballoblanco != "blanco" );
 
  */
-
-
-
-/* ---- carrousel del index ---- */
-
-const grande    = document.querySelector('.grande')
-const punto     = document.querySelectorAll('.punto')
-
-punto.forEach( ( cadaPunto , i )=> {
-    punto[i].addEventListener('click',()=>{
-
-        
-        let posicion  = i
-        
-        let operacion = posicion * -50
-
-        
-        grande.style.transform = `translateX(${ operacion }%)`
-
-        
-        punto.forEach( ( cadaPunto , i )=>{
-            
-            punto[i].classList.remove('activo')
-        })
-        
-        punto[i].classList.add('activo')
-
-    })
-})
-        
-
-
-
