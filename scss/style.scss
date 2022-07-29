@@ -1,5 +1,7 @@
+
 @import "footeryheader";
 @import "mediaquerry";
+
 
 
 * {
@@ -10,16 +12,14 @@
 
 /* ----------------------------------- I N D E X ------------------------------------------------ */
 
-/* .contenedor__password{
-    display: flex;
-    align-content: flex-start;
-    justify-content: end;
-} */
 
 body {
     background-color: rgba(255, 228, 196, 0.514) !important;
 }
 
+.sectionprincipal{
+    margin-top: 6rem !important;
+}
 
 .showcase__bienvenida {
     margin-top: 2rem;
@@ -145,3 +145,77 @@ body {
 .carrousel .punto.activo {
     background-color: lightblue;
 }
+
+
+/* Items Que Aparecen Dentro Del Carrito */
+
+.offcanvas-title{
+    font-weight: 700;
+}
+
+.btn__compra{
+    text-align: left;
+    border-radius: 4px;
+    padding: 0.3rem;
+    border: none;
+    background-color: rgb(116, 158, 216);
+    color: white;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.46);
+    align-items: flex-end;
+}
+
+.btn__compra:hover {
+    box-shadow: 0px 0px 10px 0px rgb(246, 255, 117);
+    background-color: rgb(69, 128, 209);
+    transition: 0.7s;
+}
+
+.total__carrito--container{
+    @extend .item__carrito--contenedor;
+    margin: 0.5rem !important;
+
+}
+
+.total__carrito--container h5{
+    margin: 0;
+    align-items: flex-start;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+}
+
+
+
+.item__carrito--contenedor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(156, 174, 199, 0.589);
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.item__carrito--imagen{
+    border-radius: 50%;
+    max-height: 5rem;
+    min-width: 4rem;
+}
+
+.item__carrito--texto{
+    padding: 0 2rem;
+}
+
+
+.item__carrito--texto h6 {
+    margin: auto;
+    font-weight: 800;
+    font-size: large;
+}
+
+.item__carrito--texto p {
+    margin: auto;
+    color: rgb(139, 139, 139);
+
+}
+

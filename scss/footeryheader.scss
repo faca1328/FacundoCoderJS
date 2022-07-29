@@ -3,6 +3,11 @@
 header {
     background-color: rgb(170, 170, 170);
     height: 5rem;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top:0;
 }
 
 header nav section{
@@ -46,3 +51,9 @@ header nav section{
 .nav__carrito:hover{
     color: rgb(1, 55, 126);
 }
+
+
+.carritodesplegable{
+    margin-top: 5rem;
+}
+

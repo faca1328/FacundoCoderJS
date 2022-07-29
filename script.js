@@ -11,16 +11,16 @@ class libro {
 
 const libreria = [
     new libro("La poesia de adolfo becquer", "Adolfo Becquer" , "desarrollo personal" , 800),
-    new libro("Eragon", "Christopher Paolin", "fantasia", 2300),
-    new libro("Cronicas de la torre 1", "Laura Gallego Garcia", "fantasia", 1250),
-    new libro("El demonio de arbennios", "Bernard Torello", "fantasia", 1800),
-    new libro("Fuego y sangre", "Reorge RR Martin", "fantasia", 4700),
+    new libro("Eragon", "Christopher Paolin", "fantasia", 2.300),
+    new libro("Cronicas de la torre 1", "Laura Gallego Garcia", "fantasia", 1.250),
+    new libro("El demonio de arbennios", "Bernard Torello", "fantasia", 1.800),
+    new libro("Fuego y sangre", "Reorge RR Martin", "fantasia", 4.700),
     new libro("Mareas de medianoche", "Steven Erikson", "fantasia", 980),
-    new libro("Habitos atomicos", "James Clear", "desarrollo personal", 1300),
-    new libro("Harry potter y el caliz de fuego", "JK Rowling", "fantasia", 2100),
+    new libro("Habitos atomicos", "James Clear", "desarrollo personal", 1.300),
+    new libro("Harry potter y el caliz de fuego", "JK Rowling", "fantasia", 2.100),
     new libro("Kings of the wilds", "Nicholas Eames", "fantasia", 1999),
-    new libro("El señor de los anillos 1", "JRR Tolkien" , "fantasia", 2100),
-    new libro("Padre rico padre pobre", "Robert T Kiyosaki", "desarrollo personal", 3000),
+    new libro("El señor de los anillos 1", "JRR Tolkien" , "fantasia", 2.100),
+    new libro("Padre rico padre pobre", "Robert T Kiyosaki", "desarrollo personal", 3.000),
     new libro("Piense y hagase rico", "Napoleon Hill", "desarrollo personal", 2300)
 ];
 
@@ -37,25 +37,107 @@ function mostrar(libreria){
 
 //------------- C A R R I T O ---------//
 
+//Donde se va a agregar el DIV con el .createElemnt
+const ContenedorItemsCarrito = document.querySelector('.contenedoritems__carrito');
+
+//BotonES "Añadir al Carrito"
 const aniadiralcarritokotw = document.querySelector(".btnkotw");
 
+const aniadiralcarritoPyhr = document.querySelector(".btnpyhr");
 
+const aniadiralcarritoHpyecdf = document.querySelector(".btnhpyecdf");
+
+
+//Evento del Boton "Añadir al Carrito"
 aniadiralcarritokotw.addEventListener("click", aniadirclickeado);
+
+aniadiralcarritoPyhr.addEventListener("click", aniadirclickeado);
+
+aniadiralcarritoHpyecdf.addEventListener("click", aniadirclickeado);
 
 
 function aniadirclickeado(event){
     const button = event.target;
     const item = button.closest(".itemclickeado");
     
+//Titulo
+    const itemTitulo= item.querySelector(".item-titulo").textContent;
 
-    const itemtitulo= item.querySelector(".item-titulo").textContent;
+//Precio
+    const preciolibroclickeado = (libreria.find(elemento => elemento.titulo == itemTitulo));
 
-    const preciolibroclickeado = (libreria.filter(elemento => elemento.titulo == itemtitulo));
-    // ¿COMO HAGO QUE ESTO TERMINE EN UNA FUNCION QUE ME TIRE EL PRECIO DESDE EL ARRAY?
+    const itemPrecio = parseInt(preciolibroclickeado.precio);
 
+//Imagen
+    const itemImagen = item.querySelector(".item-imagen").src;
 
-    console.log(itemtitulo,preciolibroclickeado);
+    AniadirItemaCarrito(itemTitulo,itemPrecio,itemImagen);
 }
+
+function AniadirItemaCarrito(itemTitulo,itemPrecio,itemImagen){
+
+    //Evitar Items Repetidos
+/*     const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName(".item__carrito--texto");
+
+    for (let i = 0; i < ItemNOrepetir.length; i++){
+        if(ItemNOrepetir[i].innerText === itemTitulo){
+        
+        }
+    } */
+
+
+    //Agregar un Item con codigo HTML
+    const ItemEnCarrito = document.createElement('div');
+    const ContenidoCarrito = 
+    `<div class="item__carrito--contenedor">    <img src= ${itemImagen} class="item__carrito--imagen">    <div class="item__carrito--texto">    <h6>${itemTitulo}</h6>      <p class="precio__item">$ ${itemPrecio}</p>    </div>    <button class="btn btn-danger buttonDelete" type="button">X</button>  </div>`;
+    ItemEnCarrito.innerHTML = ContenidoCarrito;
+    ContenedorItemsCarrito.append(ItemEnCarrito);
+
+    //Boton borrar
+    ItemEnCarrito.querySelector(".buttonDelete").addEventListener("click",borraritem);
+
+    SumaPreciosCarrito()
+}
+
+function SumaPreciosCarrito(){
+    let total = 0;
+    const totalcarrito = document.querySelector('.total__carrito');
+
+    const itemscarrito = document.querySelectorAll('.item__carrito--contenedor');
+
+    itemscarrito.forEach((itemdelcarrito) => {
+       const elementoPrecio = itemdelcarrito.querySelector('.precio__item');
+
+       const elementoPrecioTexto = Number(elementoPrecio.textContent.replace("$",""));
+
+        total = total + elementoPrecioTexto;
+    });
+    
+    totalcarrito.innerHTML = `${total}`;
+
+}
+
+//Funcion ´Boton Borrar´ 1 item
+function borraritem(evento){
+    const clickbotonborrar=evento.target;
+    clickbotonborrar.closest('.item__carrito--contenedor').remove();
+}
+
+
+//Boton Compra del Carrito
+const ComprarBTN = document.querySelector(".btn__compra");
+ComprarBTN.addEventListener("click", ComprarBTNclickeado)
+//Funcion que borra todo al comprar del Carrito
+function ComprarBTNclickeado(){
+    ContenedorItemsCarrito.innerHTML = '';
+    SumaPreciosCarrito();
+
+}
+
+
+
+
+
 
 
 

@@ -1,6 +1,11 @@
 header {
   background-color: #aaaaaa;
-  height: 5rem; }
+  height: 5rem;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 0; }
 
 header nav section {
   display: flex;
@@ -33,19 +38,20 @@ header nav section {
 .nav__carrito:hover {
   color: #01377e; }
 
+.carritodesplegable {
+  margin-top: 5rem; }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
 
 /* ----------------------------------- I N D E X ------------------------------------------------ */
-/* .contenedor__password{
-    display: flex;
-    align-content: flex-start;
-    justify-content: end;
-} */
 body {
   background-color: rgba(255, 228, 196, 0.514) !important; }
+
+.sectionprincipal {
+  margin-top: 6rem !important; }
 
 .showcase__bienvenida, .showcase__libros, .showcase__banner, .carrousel {
   margin-top: 2rem;
@@ -148,3 +154,58 @@ body {
 
 .carrousel .punto.activo {
   background-color: lightblue; }
+
+/* Items Que Aparecen Dentro Del Carrito */
+.offcanvas-title {
+  font-weight: 700; }
+
+.btn__compra {
+  text-align: left;
+  border-radius: 4px;
+  padding: 0.3rem;
+  border: none;
+  background-color: #749ed8;
+  color: white;
+  text-shadow: 1px 1px 0px black;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.46);
+  align-items: flex-end; }
+
+.btn__compra:hover {
+  box-shadow: 0px 0px 10px 0px #f6ff75;
+  background-color: #4580d1;
+  transition: 0.7s; }
+
+.total__carrito--container {
+  margin: 0.5rem !important; }
+
+.total__carrito--container h5 {
+  margin: 0;
+  align-items: flex-start;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 600; }
+
+.item__carrito--contenedor, .total__carrito--container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(156, 174, 199, 0.589);
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-bottom: 0.8rem; }
+
+.item__carrito--imagen {
+  border-radius: 50%;
+  max-height: 5rem;
+  min-width: 4rem; }
+
+.item__carrito--texto {
+  padding: 0 2rem; }
+
+.item__carrito--texto h6 {
+  margin: auto;
+  font-weight: 800;
+  font-size: large; }
+
+.item__carrito--texto p {
+  margin: auto;
+  color: #8b8b8b; }

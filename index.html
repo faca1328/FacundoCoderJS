@@ -2,143 +2,169 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kindle Web</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/8c75121902.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="../CoderJs/recursos/favicon-32x32.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kindle Web</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/8c75121902.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="../CoderJs/recursos/favicon-32x32.png">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <section class="container-fluid">
-                <a href="#">
-                    <img src="../CoderJs/recursos/kindle-logo.jpg" class="rounded float-start nav__logo" alt="logo">
-                </a>
-                <button class="nav__login">
-                    Iniciar Sesión
-                </button>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Buscar Kindle" aria-label="Search">
-                    <button type="submit" class="btn__lupa"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
-                <a href="#" class="nav__carrito">
-                    <i class="fa-solid fa-cart-shopping fa-2x"></i>
-                </a>
-            </section>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <section class="container-fluid">
+        <a href="#">
+          <img src="../CoderJs/recursos/kindle-logo.jpg" class="rounded float-start nav__logo" alt="logo">
+        </a>
+        <button class="nav__login">
+          Iniciar Sesión
+        </button>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Buscar Kindle" aria-label="Search">
+          <button type="submit" class="btn__lupa"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
 
-    <main>
-        <section class="container-fluid">
+        <!-- CARRITO -->
+        <a href="#" class="nav__carrito" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+          aria-controls="offcanvasWithBothOptions">
+          <i class="fa-solid fa-cart-shopping fa-2x"></i>
+        </a>
 
-            <div class="card showcase__bienvenida">
-                <div class="card-body">
-                    <h1>
-                       ¡ Bienvenidos a Kindle !
-                    </h1>
+        <div class="offcanvas offcanvas-end carritodesplegable" data-bs-scroll="true" tabindex="-1"
+          id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Tu Carrito:</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
 
-                    <p>El mejor lugar para vivir todas las experiencias que un buen libro te puede dar </p>
+          <div class="offcanvas-body contenedoritems__carrito">
+
+          </div>
+          <div class="total__carrito--container">
+            <h5>Total: </h5>
+            <p class=".total__carrito">
+             $ 0
+            </p>
+            <button class="btn__compra">Comprar</button>
+        </div>
+      </section>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container-fluid sectionprincipal">
+
+      <div class="card showcase__bienvenida">
+        <div class="card-body">
+          <h1>
+            ¡ Bienvenidos a Kindle !
+          </h1>
+
+          <p>El mejor lugar para vivir todas las experiencias que un buen libro te puede dar </p>
+        </div>
+      </div>
+
+      <div class="card showcase__libros">
+        <div class="card-body">
+          <h1> 
+            ¡ Aprovecha Nuestro HotSale !
+          </h1>
+        </div>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active itemclickeado" data-bs-interval="4000">
+              <img src="../CoderJs/recursos/kings of the wild.jpg" class="d-block w-100 item-imagen" alt="libro1">
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="item-titulo">Kings of the wilds</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+                <div class="carousel__btn">
+                  <button class="btnkotw">Agregar al carrito</button>
                 </div>
+              </div>
             </div>
-
-                <div class="card showcase__libros">
-                    <div class="card-body">
-                        <h1>
-                           ¡ Aprovecha Nuestro HotSale  !
-                        </h1>
-                    </div>
-                    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                          <div class="carousel-item active itemclickeado" data-bs-interval="4000">
-                            <img src="../CoderJs/recursos/kings of the wild.jpg" class="d-block w-100" alt="libro1">
-                            <div class="carousel-caption d-none d-md-block">
-                              <h5 class="item-titulo">Kings of the wilds</h5>
-                              <p>Some representative placeholder content for the first slide.</p>
-                              <div class="carousel__btn">
-                                <button class="btnkotw">Agregar al carrito</button>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item" data-bs-interval="5000">
-                            <img src="../CoderJs/recursos/piense y hagase rico.jpg" class="d-block w-100" alt="libro2">
-                            <div class="carousel-caption d-none d-md-block">
-                              <h5>Second slide label</h5>
-                              <p>Some representative placeholder content for the second slide.</p>
-                              <div class="carousel__btn">
-                                <button class="btnpyhr">Agregar al carrito</button>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item" data-bs-interval="5000">
-                            <img src="../CoderJs/recursos/HP y el caliz de fuego.jpg" class="d-block w-100" alt="libro3">
-                            <div class="carousel-caption d-none d-md-block">
-                              <h5>Third slide label</h5>
-                              <p>Some representative placeholder content for the third slide.</p>
-                              <div class="carousel__btn">
-                                <button class="btnhpyecdf">Agregar al carrito</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                      </div>
-                    </div>
+            <div class="carousel-item itemclickeado" data-bs-interval="5000">
+              <img src="../CoderJs/recursos/piense y hagase rico.jpg" class="d-block w-100 item-imagen" alt="libro2">
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="item-titulo">Piense y hagase rico</h5>
+                <p>Some representative placeholder content for the second slide.</p>
+                <div class="carousel__btn">
+                  <button class="btnpyhr">Agregar al carrito</button>
                 </div>
-
-                <div class="card showcase__banner">
-                    <img src="../CoderJs/recursos/03-Banner.jpg" alt="banner">
+              </div>
+            </div>
+            <div class="carousel-item itemclickeado" data-bs-interval="5000">
+              <img src="../CoderJs/recursos/HP y el caliz de fuego.jpg" class="d-block w-100 item-imagen" alt="libro3">
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="item-titulo">Harry potter y el caliz de fuego</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+                <div class="carousel__btn">
+                  <button class="btnhpyecdf">Agregar al carrito</button>
                 </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      </div>
 
-                <div class="card carrousel">
-                    <h2>Libros de Fantasia :</h2>
-                    <div class="grande">
-                        <img src="../CoderJs/recursos/lotr.jpg" alt="Imagen 1" class="img" id="elseñordelosanillos" >
-                        <img src="../CoderJs/recursos/kings of the wild.jpg" alt="Imagen 2" class="img" id="kingsofthewild">
-                        <img src="../CoderJs/recursos/eragon.jpg" alt="Imagen 3" class="img" id="eragon">
-                        <img src="../CoderJs/recursos/HP y el caliz de fuego.jpg" alt="Imagen 4" class="img" id="harrypotter">
-                        <img src="../CoderJs/recursos/fantasia5.jpg" alt="Imagen 5" class="img" id="cronicasdelastorre">
-                        <img src="../CoderJs/recursos/fantasia6.jpg" alt="Imagen 6" class="img" id="eldemoniodearbenninos">
-                        <img src="../CoderJs/recursos/fantasia7.jpg" alt="Imagen 7" class="img" id="fuegoysangre">
-                        <img src="../CoderJs/recursos/fantasia8.jpg" alt="Imagen 8" class="img" id="mareasdemedianoche">
-                    </div>
-                    <ul class="puntos">
-                        <button class="punto activo"><i class="fa-regular fa-arrow-right-from-line"></i></button>
-                        <button class="punto"></button>
-                    </ul>
-                </div>
+      <div class="card showcase__banner">
+        <img src="../CoderJs/recursos/03-Banner.jpg" alt="banner">
+      </div>
 
-        </section>
+      <div class="card carrousel">
+        <h2>Libros de Fantasia :</h2>
+        <div class="grande">
+          <img src="../CoderJs/recursos/lotr.jpg" alt="Imagen 1" class="img" id="elseñordelosanillos">
+          <img src="../CoderJs/recursos/kings of the wild.jpg" alt="Imagen 2" class="img" id="kingsofthewild">
+          <img src="../CoderJs/recursos/eragon.jpg" alt="Imagen 3" class="img" id="eragon">
+          <img src="../CoderJs/recursos/HP y el caliz de fuego.jpg" alt="Imagen 4" class="img" id="harrypotter">
+          <img src="../CoderJs/recursos/fantasia5.jpg" alt="Imagen 5" class="img" id="cronicasdelastorre">
+          <img src="../CoderJs/recursos/fantasia6.jpg" alt="Imagen 6" class="img" id="eldemoniodearbenninos">
+          <img src="../CoderJs/recursos/fantasia7.jpg" alt="Imagen 7" class="img" id="fuegoysangre">
+          <img src="../CoderJs/recursos/fantasia8.jpg" alt="Imagen 8" class="img" id="mareasdemedianoche">
+        </div>
+        <ul class="puntos">
+          <button class="punto activo"><i class="fa-regular fa-arrow-right-from-line"></i></button>
+          <button class="punto"></button>
+        </ul>
+      </div>
 
-    </main>
+    </section>
 
-    <footer>
+  </main>
+
+  <footer>
 
 
 
-    </footer>
+  </footer>
 
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
 </body>
 </body>
 
