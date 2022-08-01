@@ -20,9 +20,40 @@
         <a href="#">
           <img src="../CoderJs/recursos/kindle-logo.jpg" class="rounded float-start nav__logo" alt="logo">
         </a>
-        <button class="nav__login">
+
+        <!--    INICIAR SESION     -->
+        <button class="nav__login " type="button" data-bs-toggle="modal" data-bs-target="#reg-modal">
           Iniciar Sesión
         </button>
+
+        <div class="modal fade" id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modal-title">New message</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h3> Ingresa tu Correo Electronico y Contrseña</h3>
+
+                <label for="modal-email" class="form-label"> Email </label>
+                <input type="email" class="form-control" id="modal-email"
+                placeholder="tu email">
+
+                <label for="modal-password" class="form-label"> Contraseña </label>
+                <input type="password" class="form-control" id="modal-password"
+                placeholder="tu contraseña">
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Buscar Kindle" aria-label="Search">
           <button type="submit" class="btn__lupa"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -31,6 +62,9 @@
         <!-- CARRITO -->
         <a href="#" class="nav__carrito" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
           aria-controls="offcanvasWithBothOptions">
+          <span class="btn_carrito--alerta translate-middle p-2 bg-danger border border-light rounded-circle">
+            <span class="visually-hidden">New alerts</span>
+          </span>
           <i class="fa-solid fa-cart-shopping fa-2x"></i>
         </a>
 
@@ -46,7 +80,7 @@
           </div>
           <div class="total__carrito--container">
             <h5>Total: </h5>
-            <p class=".total__carrito">
+            <p class="total__carrito">
              $ 0
             </p>
             <button class="btn__compra">Comprar</button>

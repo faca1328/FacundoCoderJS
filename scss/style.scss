@@ -147,6 +147,15 @@ body {
 }
 
 
+//Carrito
+
+.btn_carrito--alerta{
+    position: absolute;
+    top: 25%;
+    right: 0%;
+}
+
+
 /* Items Que Aparecen Dentro Del Carrito */
 
 .offcanvas-title{
@@ -184,6 +193,10 @@ body {
     font-weight: 600;
 }
 
+.total__carrito{
+    margin-bottom: 0;
+    font-weight: 600;
+}
 
 
 .item__carrito--contenedor{
@@ -216,6 +229,7 @@ body {
 .item__carrito--texto p {
     margin: auto;
     color: rgb(139, 139, 139);
-
 }
+
+
 

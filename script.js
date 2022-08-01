@@ -11,16 +11,16 @@ class libro {
 
 const libreria = [
     new libro("La poesia de adolfo becquer", "Adolfo Becquer" , "desarrollo personal" , 800),
-    new libro("Eragon", "Christopher Paolin", "fantasia", 2.300),
-    new libro("Cronicas de la torre 1", "Laura Gallego Garcia", "fantasia", 1.250),
-    new libro("El demonio de arbennios", "Bernard Torello", "fantasia", 1.800),
-    new libro("Fuego y sangre", "Reorge RR Martin", "fantasia", 4.700),
+    new libro("Eragon", "Christopher Paolin", "fantasia", 2300),
+    new libro("Cronicas de la torre 1", "Laura Gallego Garcia", "fantasia", 1250),
+    new libro("El demonio de arbennios", "Bernard Torello", "fantasia", 1800),
+    new libro("Fuego y sangre", "Reorge RR Martin", "fantasia", 4700),
     new libro("Mareas de medianoche", "Steven Erikson", "fantasia", 980),
-    new libro("Habitos atomicos", "James Clear", "desarrollo personal", 1.300),
-    new libro("Harry potter y el caliz de fuego", "JK Rowling", "fantasia", 2.100),
+    new libro("Habitos atomicos", "James Clear", "desarrollo personal", 1300),
+    new libro("Harry potter y el caliz de fuego", "JK Rowling", "fantasia", 2100),
     new libro("Kings of the wilds", "Nicholas Eames", "fantasia", 1999),
-    new libro("El señor de los anillos 1", "JRR Tolkien" , "fantasia", 2.100),
-    new libro("Padre rico padre pobre", "Robert T Kiyosaki", "desarrollo personal", 3.000),
+    new libro("El señor de los anillos 1", "JRR Tolkien" , "fantasia", 2100),
+    new libro("Padre rico padre pobre", "Robert T Kiyosaki", "desarrollo personal", 3000),
     new libro("Piense y hagase rico", "Napoleon Hill", "desarrollo personal", 2300)
 ];
 
@@ -56,6 +56,8 @@ aniadiralcarritoPyhr.addEventListener("click", aniadirclickeado);
 aniadiralcarritoHpyecdf.addEventListener("click", aniadirclickeado);
 
 
+
+
 function aniadirclickeado(event){
     const button = event.target;
     const item = button.closest(".itemclickeado");
@@ -67,6 +69,7 @@ function aniadirclickeado(event){
     const preciolibroclickeado = (libreria.find(elemento => elemento.titulo == itemTitulo));
 
     const itemPrecio = parseInt(preciolibroclickeado.precio);
+    
 
 //Imagen
     const itemImagen = item.querySelector(".item-imagen").src;
@@ -84,6 +87,33 @@ function AniadirItemaCarrito(itemTitulo,itemPrecio,itemImagen){
         
         }
     } */
+
+    const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName(".item__carrito--texto");
+    
+    for (let i = 0; i < ItemNOrepetir.length; i++){
+        if(ItemNOrepetir[i].innerText === itemTitulo){
+            ItemNOrepetir[i]>= 2;
+            return null
+        }
+    };
+        
+
+    
+  /*   if(ItemNOrepetir === itemTitulo){
+        for (let i = 0; i < ItemNOrepetir.length; i++){
+            if(ItemNOrepetir[i] >= 2)
+            console.log(i);
+            /* return null; */
+
+
+
+/*     contenedoritems__carrito.forEach((ItemNOrepetir) => {
+        if(ItemNOrepetir.innerText === itemTitulo){
+            return null;
+        }
+
+    }) */
+
 
 
     //Agregar un Item con codigo HTML
@@ -110,10 +140,11 @@ function SumaPreciosCarrito(){
 
        const elementoPrecioTexto = Number(elementoPrecio.textContent.replace("$",""));
 
+
         total = total + elementoPrecioTexto;
     });
     
-    totalcarrito.innerHTML = `${total}`;
+    totalcarrito.innerHTML = `$ ${total}`;
 
 }
 
@@ -121,6 +152,7 @@ function SumaPreciosCarrito(){
 function borraritem(evento){
     const clickbotonborrar=evento.target;
     clickbotonborrar.closest('.item__carrito--contenedor').remove();
+    SumaPreciosCarrito()
 }
 
 
@@ -134,7 +166,11 @@ function ComprarBTNclickeado(){
 
 }
 
-
+//Alerta Carrito
+const BTNalertacarrito = document.querySelector(".btn_carrito--alerta");
+if (ContenedorItemsCarrito /* NO tiene algo dentro */){
+    /* BTNalertacarrito = hidden */
+}
 
 
 
@@ -168,6 +204,31 @@ punto.forEach( ( cadaPunto , i )=> {
     })
 })
         
+
+
+/* ---- INICIAR SESION   MODAL    ---- */
+
+/* const exampleModal = document.getElementById('exampleModal')
+exampleModal.addEventListener('show.bs.modal', event => {
+  // Button that triggered the modal
+  const button = event.relatedTarget
+  // Extract info from data-bs-* attributes
+  const recipient = button.getAttribute('data-bs-whatever')
+  // If necessary, you could initiate an AJAX request here
+  // and then do the updating in a callback.
+  //
+  // Update the modal's content.
+  const modalTitle = exampleModal.querySelector('.modal-title')
+  const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+  modalTitle.textContent = `New message to ${recipient}`
+  modalBodyInput.value = recipient
+});
+ */
+
+
+
+
 
 
 
