@@ -1,16 +1,16 @@
 
 class libro {
 
-    constructor(titulo,autor,genero,precio){
-        this.titulo=titulo;
-        this.autor=autor;
-        this.genero=genero;
-        this.precio=precio;
+    constructor(titulo, autor, genero, precio) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.genero = genero;
+        this.precio = precio;
     }
 }
 
 const libreria = [
-    new libro("La poesia de adolfo becquer", "Adolfo Becquer" , "desarrollo personal" , 800),
+    new libro("La poesia de adolfo becquer", "Adolfo Becquer", "desarrollo personal", 800),
     new libro("Eragon", "Christopher Paolin", "fantasia", 2300),
     new libro("Cronicas de la torre 1", "Laura Gallego Garcia", "fantasia", 1250),
     new libro("El demonio de arbennios", "Bernard Torello", "fantasia", 1800),
@@ -19,16 +19,16 @@ const libreria = [
     new libro("Habitos atomicos", "James Clear", "desarrollo personal", 1300),
     new libro("Harry potter y el caliz de fuego", "JK Rowling", "fantasia", 2100),
     new libro("Kings of the wilds", "Nicholas Eames", "fantasia", 1999),
-    new libro("El señor de los anillos 1", "JRR Tolkien" , "fantasia", 2100),
+    new libro("El señor de los anillos 1", "JRR Tolkien", "fantasia", 2100),
     new libro("Padre rico padre pobre", "Robert T Kiyosaki", "desarrollo personal", 3000),
     new libro("Piense y hagase rico", "Napoleon Hill", "desarrollo personal", 2300)
 ];
 
-function mostrar(libreria){
-    let info = "" ;
+function mostrar(libreria) {
+    let info = "";
 
-    libreria.forEach(elemento=>{
-        info+= "Titulo: "+ elemento.titulo+ "\nAutor: "+elemento.autor+"\nPrecio: $"+elemento.precio+".- \n\n"
+    libreria.forEach(elemento => {
+        info += "Titulo: " + elemento.titulo + "\nAutor: " + elemento.autor + "\nPrecio: $" + elemento.precio + ".- \n\n"
     });
     return info;
 }
@@ -58,101 +58,91 @@ aniadiralcarritoHpyecdf.addEventListener("click", aniadirclickeado);
 
 
 
-function aniadirclickeado(event){
+function aniadirclickeado(event) {
     const button = event.target;
     const item = button.closest(".itemclickeado");
-    
-//Titulo
-    const itemTitulo= item.querySelector(".item-titulo").textContent;
 
-//Precio
+    //Titulo
+    const itemTitulo = item.querySelector(".item-titulo").textContent;
+
+    //Precio
     const preciolibroclickeado = (libreria.find(elemento => elemento.titulo == itemTitulo));
 
     const itemPrecio = parseInt(preciolibroclickeado.precio);
-    
 
-//Imagen
+
+    //Imagen
     const itemImagen = item.querySelector(".item-imagen").src;
 
-    AniadirItemaCarrito(itemTitulo,itemPrecio,itemImagen);
+    AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen);
 }
 
-function AniadirItemaCarrito(itemTitulo,itemPrecio,itemImagen){
+//Alerta Carrito
+function AlertaCarrito() {
+    const Hayelementosenelcarrito = ContenedorItemsCarrito.querySelector(".item__carrito--texto");
+    const BTNalertaCarrito = document.querySelector(".btn_carrito--alerta");
+    
+    Hayelementosenelcarrito.length == 0 ?       BTNalertaCarrito.style.display = "none" :           BTNalertaCarrito.style.display = "block";
+}
+//Ver como hacer q desaparesca cuando no hay mas cosas en el carrito
+
+
+
+
+function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
+
+    
 
     //Evitar Items Repetidos
-/*     const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName(".item__carrito--texto");
+    const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName("item__carrito--texto");
 
-    for (let i = 0; i < ItemNOrepetir.length; i++){
-        if(ItemNOrepetir[i].innerText === itemTitulo){
-        
-        }
-    } */
-
-    const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName(".item__carrito--texto");
-    
-    for (let i = 0; i < ItemNOrepetir.length; i++){
-        if(ItemNOrepetir[i].innerText === itemTitulo){
-            ItemNOrepetir[i]>= 2;
-            return null
+    for (let i = 0; i < ItemNOrepetir.length; i++) {
+        if (ItemNOrepetir[i].innerHTML.includes(itemTitulo)) {
+            return
         }
     };
-        
-
-    
-  /*   if(ItemNOrepetir === itemTitulo){
-        for (let i = 0; i < ItemNOrepetir.length; i++){
-            if(ItemNOrepetir[i] >= 2)
-            console.log(i);
-            /* return null; */
-
-
-
-/*     contenedoritems__carrito.forEach((ItemNOrepetir) => {
-        if(ItemNOrepetir.innerText === itemTitulo){
-            return null;
-        }
-
-    }) */
-
 
 
     //Agregar un Item con codigo HTML
     const ItemEnCarrito = document.createElement('div');
-    const ContenidoCarrito = 
-    `<div class="item__carrito--contenedor">    <img src= ${itemImagen} class="item__carrito--imagen">    <div class="item__carrito--texto">    <h6>${itemTitulo}</h6>      <p class="precio__item">$ ${itemPrecio}</p>    </div>    <button class="btn btn-danger buttonDelete" type="button">X</button>  </div>`;
+    const ContenidoCarrito =
+        `<div class="item__carrito--contenedor">    <img src= ${itemImagen} class="item__carrito--imagen">    <div class="item__carrito--texto">    <h6>${itemTitulo}</h6>      <p class="precio__item">$ ${itemPrecio}</p>    </div>    <button class="btn btn-danger buttonDelete" type="button">X</button>  </div>`;
     ItemEnCarrito.innerHTML = ContenidoCarrito;
     ContenedorItemsCarrito.append(ItemEnCarrito);
 
     //Boton borrar
-    ItemEnCarrito.querySelector(".buttonDelete").addEventListener("click",borraritem);
+    ItemEnCarrito.querySelector(".buttonDelete").addEventListener("click", borraritem);
 
     SumaPreciosCarrito()
+
+    AlertaCarrito()
 }
 
-function SumaPreciosCarrito(){
+function SumaPreciosCarrito() {
     let total = 0;
     const totalcarrito = document.querySelector('.total__carrito');
 
     const itemscarrito = document.querySelectorAll('.item__carrito--contenedor');
 
     itemscarrito.forEach((itemdelcarrito) => {
-       const elementoPrecio = itemdelcarrito.querySelector('.precio__item');
+        const elementoPrecio = itemdelcarrito.querySelector('.precio__item');
 
-       const elementoPrecioTexto = Number(elementoPrecio.textContent.replace("$",""));
+        const elementoPrecioTexto = Number(elementoPrecio.textContent.replace("$", ""));
 
 
         total = total + elementoPrecioTexto;
     });
-    
+
     totalcarrito.innerHTML = `$ ${total}`;
 
 }
 
 //Funcion ´Boton Borrar´ 1 item
-function borraritem(evento){
-    const clickbotonborrar=evento.target;
+function borraritem(evento) {
+    const clickbotonborrar = evento.target;
     clickbotonborrar.closest('.item__carrito--contenedor').remove();
     SumaPreciosCarrito()
+    AlertaCarrito()
 }
 
 
@@ -160,18 +150,30 @@ function borraritem(evento){
 const ComprarBTN = document.querySelector(".btn__compra");
 ComprarBTN.addEventListener("click", ComprarBTNclickeado)
 //Funcion que borra todo al comprar del Carrito
-function ComprarBTNclickeado(){
+function ComprarBTNclickeado() {
     ContenedorItemsCarrito.innerHTML = '';
     SumaPreciosCarrito();
-
+    AlertaCarrito();
 }
 
-//Alerta Carrito
-const BTNalertacarrito = document.querySelector(".btn_carrito--alerta");
-if (ContenedorItemsCarrito /* NO tiene algo dentro */){
-    /* BTNalertacarrito = hidden */
-}
 
+
+
+
+//Hover por JS
+let Lotr = document.querySelector(".imglotr");
+let Btnoculto = document.querySelector(".hiddenbtn");
+console.log(Btnoculto);
+
+Lotr.addEventListener("mouseover", ()=> {
+    Btnoculto.style.display = "block";
+    Lotr.style.filter = "blur(2px)";
+});
+
+Lotr.addEventListener("mouseout", ()=> {
+    Btnoculto.style.display = "none";
+    Lotr.style.filter = "blur(0px)";
+});
 
 
 
@@ -179,52 +181,33 @@ if (ContenedorItemsCarrito /* NO tiene algo dentro */){
 
 /* ---- carrousel del index ---- */
 
-const grande    = document.querySelector('.grande')
-const punto     = document.querySelectorAll('.punto')
+const grande = document.querySelector('.grande')
+const punto = document.querySelectorAll('.punto')
 
-punto.forEach( ( cadaPunto , i )=> {
-    punto[i].addEventListener('click',()=>{
+punto.forEach((cadaPunto, i) => {
+    punto[i].addEventListener('click', () => {
 
-        
-        let posicion  = i
-        
+
+        let posicion = i
+
         let operacion = posicion * -50
 
-        
-        grande.style.transform = `translateX(${ operacion }%)`
 
-        
-        punto.forEach( ( cadaPunto , i )=>{
-            
+        grande.style.transform = `translateX(${operacion}%)`
+
+
+        punto.forEach((cadaPunto, i) => {
+
             punto[i].classList.remove('activo')
         })
-        
+
         punto[i].classList.add('activo')
 
     })
 })
-        
 
 
-/* ---- INICIAR SESION   MODAL    ---- */
 
-/* const exampleModal = document.getElementById('exampleModal')
-exampleModal.addEventListener('show.bs.modal', event => {
-  // Button that triggered the modal
-  const button = event.relatedTarget
-  // Extract info from data-bs-* attributes
-  const recipient = button.getAttribute('data-bs-whatever')
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
-  const modalTitle = exampleModal.querySelector('.modal-title')
-  const modalBodyInput = exampleModal.querySelector('.modal-body input')
-
-  modalTitle.textContent = `New message to ${recipient}`
-  modalBodyInput.value = recipient
-});
- */
 
 
 
@@ -234,7 +217,7 @@ exampleModal.addEventListener('show.bs.modal', event => {
 
 // -------- HACER QUE LAS TARJETAS DE LOS CARROUSELES SE DEN VUELTA ------------//
 
-/* 
+/*
 const elseñordelosanillos = document.getElementById(elseñordelosanillos);
 
 const kingsofthewild = document.getElementById(kingsofthewild);

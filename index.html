@@ -27,27 +27,25 @@
         </button>
 
         <div class="modal fade" id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="modal-title">New message</h5>
+                <h5 class="modal-title" id="modal-title">Bienvenido/a</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <h3> Ingresa tu Correo Electronico y Contrseña</h3>
 
                 <label for="modal-email" class="form-label"> Email </label>
-                <input type="email" class="form-control" id="modal-email"
-                placeholder="tu email">
+                <input type="email" class="form-control" id="modal-email" placeholder="tu email">
 
                 <label for="modal-password" class="form-label"> Contraseña </label>
-                <input type="password" class="form-control" id="modal-password"
-                placeholder="tu contraseña">
+                <input type="password" class="form-control" id="modal-password" placeholder="tu contraseña">
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Login</button>
               </div>
             </div>
           </div>
@@ -63,7 +61,6 @@
         <a href="#" class="nav__carrito" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
           aria-controls="offcanvasWithBothOptions">
           <span class="btn_carrito--alerta translate-middle p-2 bg-danger border border-light rounded-circle">
-            <span class="visually-hidden">New alerts</span>
           </span>
           <i class="fa-solid fa-cart-shopping fa-2x"></i>
         </a>
@@ -81,10 +78,10 @@
           <div class="total__carrito--container">
             <h5>Total: </h5>
             <p class="total__carrito">
-             $ 0
+              $ 0
             </p>
             <button class="btn__compra">Comprar</button>
-        </div>
+          </div>
       </section>
     </nav>
   </header>
@@ -104,7 +101,7 @@
 
       <div class="card showcase__libros">
         <div class="card-body">
-          <h1> 
+          <h1>
             ¡ Aprovecha Nuestro HotSale !
           </h1>
         </div>
@@ -167,17 +164,36 @@
         <img src="../CoderJs/recursos/03-Banner.jpg" alt="banner">
       </div>
 
+
+      <!-- Segundo Carrousel -->
       <div class="card carrousel">
         <h2>Libros de Fantasia :</h2>
         <div class="grande">
-          <img src="../CoderJs/recursos/lotr.jpg" alt="Imagen 1" class="img" id="elseñordelosanillos">
-          <img src="../CoderJs/recursos/kings of the wild.jpg" alt="Imagen 2" class="img" id="kingsofthewild">
-          <img src="../CoderJs/recursos/eragon.jpg" alt="Imagen 3" class="img" id="eragon">
-          <img src="../CoderJs/recursos/HP y el caliz de fuego.jpg" alt="Imagen 4" class="img" id="harrypotter">
-          <img src="../CoderJs/recursos/fantasia5.jpg" alt="Imagen 5" class="img" id="cronicasdelastorre">
-          <img src="../CoderJs/recursos/fantasia6.jpg" alt="Imagen 6" class="img" id="eldemoniodearbenninos">
-          <img src="../CoderJs/recursos/fantasia7.jpg" alt="Imagen 7" class="img" id="fuegoysangre">
-          <img src="../CoderJs/recursos/fantasia8.jpg" alt="Imagen 8" class="img" id="mareasdemedianoche">
+          <div class="contenedor__img">
+            <img src="../CoderJs/recursos/lotr.jpg" alt="Imagen 1" class="img imglotr" id="elseñordelosanillos">
+            <button class="hiddenbtn">Añadir al Carrito</button>
+          </div>
+          <div class="contenedor__img">
+            <img src="../CoderJs/recursos/kings of the wild.jpg" alt="Imagen 2" class="img" id="kingsofthewild">
+          </div>
+          <div class="contenedor__img">
+            <img src="../CoderJs/recursos/eragon.jpg" alt="Imagen 3" class="img" id="eragon">
+          </div>
+          <div class="contenedor__img">
+            <img src="../CoderJs/recursos/HP y el caliz de fuego.jpg" alt="Imagen 4" class="img" id="harrypotter">
+          </div>
+          <div class="contenedor__img">
+            <img src="../CoderJs/recursos/fantasia5.jpg" alt="Imagen 5" class="img" id="cronicasdelastorre">
+          </div>
+          <div class="contenedor__img">
+            <img src="../CoderJs/recursos/fantasia6.jpg" alt="Imagen 6" class="img" id="eldemoniodearbenninos">
+          </div>
+          <div class="contenedor__img">
+            <img src="../CoderJs/recursos/fantasia7.jpg" alt="Imagen 7" class="img" id="fuegoysangre">
+          </div>
+          <div class="contenedor__img">
+            <img src="../CoderJs/recursos/fantasia8.jpg" alt="Imagen 8" class="img" id="mareasdemedianoche">
+          </div>
         </div>
         <ul class="puntos">
           <button class="punto activo"><i class="fa-regular fa-arrow-right-from-line"></i></button>

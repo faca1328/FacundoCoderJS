@@ -2,7 +2,7 @@ header {
   background-color: #aaaaaa;
   height: 5rem;
   position: fixed;
-  z-index: 100;
+  z-index: 1100;
   left: 0;
   right: 0;
   top: 0; }
@@ -92,7 +92,7 @@ body {
 .showcase__banner, .carrousel {
   margin-bottom: 2rem; }
 
-/* carrousel propio */
+/* -------- carrousel propio -------- */
 .carrousel {
   max-width: 120em;
   padding: 2em;
@@ -123,8 +123,7 @@ body {
   transform: translateX(0%); }
 
 .carrousel .img {
-  width: calc(100% / 3);
-  min-height: 10vh;
+  width: 100%;
   max-height: 60vh;
   color: #393939;
   transition: all 0.4s ease;
@@ -155,10 +154,34 @@ body {
 .carrousel .punto.activo {
   background-color: lightblue; }
 
+.contenedor__img {
+  width: calc(100% / 3);
+  height: fit-content;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  position: relative; }
+
+.hiddenbtn {
+  position: absolute;
+  top: 80%;
+  right: 10%;
+  border: none;
+  background-color: rgba(102, 102, 102, 0.74);
+  padding: 0.3vw 4vw;
+  border-top: solid #5086d3 4px;
+  color: #b9e3ff;
+  text-shadow: 0px 0px 20px black;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.46);
+  font-weight: 700;
+  flex-wrap: wrap;
+  font-size: 1.2vw;
+  display: none; }
+
 .btn_carrito--alerta {
   position: absolute;
   top: 25%;
-  right: 0%; }
+  right: 0%;
+  display: none; }
 
 /* Items Que Aparecen Dentro Del Carrito */
 .offcanvas-title {
