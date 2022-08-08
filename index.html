@@ -6,11 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kindle Web</title>
-  <link rel="stylesheet" href="css/main.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script src="https://kit.fontawesome.com/8c75121902.js" crossorigin="anonymous"></script>
   <link rel="icon" type="image/png" href="../CoderJs/recursos/favicon-32x32.png">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -72,9 +73,8 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
 
-          <div class="offcanvas-body contenedoritems__carrito">
+          <div class="offcanvas-body contenedoritems__carrito"></div>
 
-          </div>
           <div class="total__carrito--container">
             <h5>Total: </h5>
             <p class="total__carrito">
@@ -85,6 +85,7 @@
       </section>
     </nav>
   </header>
+
 
   <main>
     <section class="container-fluid sectionprincipal">
@@ -118,13 +119,13 @@
             <div class="carousel-item active itemclickeado" data-bs-interval="4000">
               <img src="../CoderJs/recursos/kings of the wild.jpg" class="d-block w-100 item-imagen" alt="libro1">
               <div class="carousel-caption d-none d-md-block">
-                <h5 class="item-titulo">Kings of the wilds</h5>
+                <h5 class="item-titulo">Kings of the Wilds</h5>
                 <p>Some representative placeholder content for the first slide.</p>
                 <div class="carousel__btn">
                   <button class="btnkotw">Agregar al carrito</button>
                 </div>
               </div>
-            </div>
+            </div> 
             <div class="carousel-item itemclickeado" data-bs-interval="5000">
               <img src="../CoderJs/recursos/piense y hagase rico.jpg" class="d-block w-100 item-imagen" alt="libro2">
               <div class="carousel-caption d-none d-md-block">
@@ -138,7 +139,7 @@
             <div class="carousel-item itemclickeado" data-bs-interval="5000">
               <img src="../CoderJs/recursos/HP y el caliz de fuego.jpg" class="d-block w-100 item-imagen" alt="libro3">
               <div class="carousel-caption d-none d-md-block">
-                <h5 class="item-titulo">Harry potter y el caliz de fuego</h5>
+                <h5 class="item-titulo">Harry Potter y el caliz de fuego</h5>
                 <p>Some representative placeholder content for the third slide.</p>
                 <div class="carousel__btn">
                   <button class="btnhpyecdf">Agregar al carrito</button>
@@ -158,6 +159,7 @@
           </button>
         </div>
       </div>
+
       </div>
 
       <div class="card showcase__banner">
@@ -169,30 +171,95 @@
       <div class="card carrousel">
         <h2>Libros de Fantasia :</h2>
         <div class="grande">
-          <div class="contenedor__img">
-            <img src="../CoderJs/recursos/lotr.jpg" alt="Imagen 1" class="img imglotr" id="elseñordelosanillos">
-            <button class="hiddenbtn">Añadir al Carrito</button>
+          <div class="contenedor__img contenedor__img--Lotr itemclickeado" >
+            <img src="../CoderJs/recursos/lotr.jpg" alt="Imagen 1" class="img imglotr item-imagen">
+            <button class="hiddenbtn btn__lotr">Añadir al Carrito</button>
+            <div class="hiddentext text__lotr">
+              <h6 class="item-titulo">El Señor de los Anillos 1</h6>
+              <p>
+                En la Tierra Media, el Señor Oscuro Sauron forjó los Grandes Anillos del Poder y creó uno con el poder
+                de esclavizar a toda la Tierra Media. Frodo Bolsón es un hobbit al que su tío Bilbo hace portador del
+                poderoso Anillo Único con la misión de destruirlo.
+              </p>
+            </div>
           </div>
-          <div class="contenedor__img">
-            <img src="../CoderJs/recursos/kings of the wild.jpg" alt="Imagen 2" class="img" id="kingsofthewild">
+
+          <div class="contenedor__img  contenedor__img--kotw itemclickeado">
+            <img src="../CoderJs/recursos/kings of the wild.jpg" alt="Imagen 2" class="img kingsofthewild item-imagen" >
+            <button class="hiddenbtn btn__kotw">Añadir al Carrito</button>
+            <div class="hiddentext text__kotw">
+              <h6 class="item-titulo">Kings of the Wilds</h6>
+              <p>
+                Después de años del retiro de la mayor banda de mercenarios que el mundo haya visto, Gabe, debe reunir a sus compañeros ya viejos y maltrechos para salvar a su hija Rose.
+              </p>
+            </div>
           </div>
-          <div class="contenedor__img">
-            <img src="../CoderJs/recursos/eragon.jpg" alt="Imagen 3" class="img" id="eragon">
+
+          <div class="contenedor__img contenedor__img--eragon itemclickeado">
+            <img src="../CoderJs/recursos/eragon.jpg" alt="Imagen 3" class="img img__eragon item-imagen" >
+            <button class="hiddenbtn btn__eragon">Añadir al Carrito</button>
+            <div class="hiddentext text__eragon">
+              <h6 class="item-titulo">Eragon</h6>
+              <p>
+                Eragon es una novela fantástica escrita por Christopher Paolini, el primer libro de la saga de Eragon. Su portada se identifica por un color de fondo y un dragón, así como sus secuelas Eldest, Brisingr y Legado.
+              </p>
+            </div>
           </div>
-          <div class="contenedor__img">
-            <img src="../CoderJs/recursos/HP y el caliz de fuego.jpg" alt="Imagen 4" class="img" id="harrypotter">
+
+          <div class="contenedor__img contenedor__img--hp itemclickeado">
+            <img src="../CoderJs/recursos/HP y el caliz de fuego.jpg" alt="Imagen 4" class="img img__hp item-imagen">
+            <button class="hiddenbtn btn__hp">Añadir al Carrito</button>
+            <div class="hiddentext text__hp">
+              <span class="titulo__hp--oculto item-titulo">Harry Potter y el caliz de fuego</span>
+              <h6>Harry Potter 4</h6>
+              <p>
+                Hogwarts se prepara para el Torneo de los Tres Magos. Para sorpresa de todos, Harry Potter es elegido para participar en la competencia, en la que deberá luchar contra dragones, internarse en el agua y enfrentarse a sus mayores miedos.
+              </p>
+            </div>
           </div>
-          <div class="contenedor__img">
-            <img src="../CoderJs/recursos/fantasia5.jpg" alt="Imagen 5" class="img" id="cronicasdelastorre">
+
+          <div class="contenedor__img contenedor__img--cdlt itemclickeado">
+            <img src="../CoderJs/recursos/fantasia5.jpg" alt="Imagen 5" class="img img__Cdlt item-imagen">
+            <button class="hiddenbtn btn__cdlt">Añadir al Carrito</button>
+            <div class="hiddentext text__cdlt">
+              <h6 class="item-titulo">Crónicas de la Torre 1</h6>
+              <p>
+                Dana creció llevando una vida normal. El día que el Maestro la llevó con él a la Torre, en el Valle de los Lobos, no se imaginaba que su vida cambiaría para siempre y que se convertiría en la depositaria de secretos tan mágicos como antiguos.
+              </p>
+            </div>
           </div>
-          <div class="contenedor__img">
-            <img src="../CoderJs/recursos/fantasia6.jpg" alt="Imagen 6" class="img" id="eldemoniodearbenninos">
+
+          <div class="contenedor__img contenedor__img--edda itemclickeado">
+            <img src="../CoderJs/recursos/fantasia6.jpg" alt="Imagen 6" class="img img__edda item-imagen">
+            <button class="hiddenbtn btn__edda">Añadir al Carrito</button>
+            <div class="hiddentext text__edda">
+              <h6 class="item-titulo">El Demonio de Arbennios</h6>
+              <p>
+                Kai es un antiguo soldado de élite que reside en Arbennios, durante un caluroso día de verano tendrá lugar un ataque inesperado que dará un giro a su vida. Condenado por la misma sociedad a la que había defendido durante años, Kai se verá arrastrado por el oscuro camino de la venganza.
+              </p>
+            </div>
           </div>
-          <div class="contenedor__img">
-            <img src="../CoderJs/recursos/fantasia7.jpg" alt="Imagen 7" class="img" id="fuegoysangre">
+
+          <div class="contenedor__img contenedor__img--fys itemclickeado">
+            <img src="../CoderJs/recursos/fantasia7.jpg" alt="Imagen 7" class="img img__fys item-imagen">
+            <button class="hiddenbtn btn__fys">Añadir al Carrito</button>
+            <div class="hiddentext text__fys">
+              <h6 class="item-titulo">Fuego y Sangre</h6>
+              <p>
+                Fuego y sangre es una novela fantástica del escritor estadounidense George R. R. Martin. Se trata de una historia completa de la casa Targaryen, una estirpe real que aparece en la saga Canción de hielo y fuego.
+              </p>
+            </div>
           </div>
-          <div class="contenedor__img">
-            <img src="../CoderJs/recursos/fantasia8.jpg" alt="Imagen 8" class="img" id="mareasdemedianoche">
+
+          <div class="contenedor__img contenedor__img--mdm itemclickeado">
+            <img src="../CoderJs/recursos/fantasia8.jpg" alt="Imagen 8" class="img img__mdm item-imagen">
+            <button class="hiddenbtn btn__mdm">Añadir al Carrito</button>
+            <div class="hiddentext text__mdm">
+              <h6 class="item-titulo">Mareas de Medianoche</h6>
+              <p>
+                Mareas de medianoche es el quinto volumen de la serie de fantasía épica Malaz: El Libro de los Caídos del autor canadiense Steven Erikson. Aunque es parte de un universo más grande, solo tiene referencias limitadas a los libros anteriores.
+              </p>
+            </div>
           </div>
         </div>
         <ul class="puntos">
@@ -210,12 +277,12 @@
 
 
   </footer>
-
-  <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="script.js"></script>
 </body>
-</body>
+
 
 </html>

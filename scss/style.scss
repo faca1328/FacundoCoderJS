@@ -73,7 +73,7 @@ body {
 }
 
 
-/* -------- carrousel propio -------- */
+/* -------- S E G U N D O Carrousel -------- */
 
 
 .carrousel {
@@ -173,6 +173,32 @@ body {
     font-size: 1.2vw;
     display: none;
 }
+
+.hiddentext {
+    position: absolute;
+    top: 10%;
+    right: 3%;
+    max-width: 20vw;
+    display: none;
+}
+
+.hiddentext h6 {
+    font-weight: 700;
+    font-size: 1.4vw;
+    background-color: rgba(255, 255, 255, 0.404);
+}
+
+.hiddentext p {
+    background-color: rgba(255, 255, 255, 0.404);
+}
+
+.titulo__hp--oculto{
+    display: none;
+    visibility: hidden;
+}
+
+
+
 
 
 
