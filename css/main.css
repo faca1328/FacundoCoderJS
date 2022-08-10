@@ -197,11 +197,10 @@ body {
 .hiddentext p {
   background-color: rgba(255, 255, 255, 0.404); }
 
-/* .kingsofthewild{
-    transform:perspective(1000px) rotateY(0deg);
-    backface-visibility: hidden;
-    display: none;
-} */
+.titulo__hp--oculto {
+  display: none;
+  visibility: hidden; }
+
 .btn_carrito--alerta {
   position: absolute;
   top: 25%;

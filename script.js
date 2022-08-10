@@ -87,6 +87,7 @@ aniadiralcarritoFys.addEventListener("click", aniadirclickeado);
 
 aniadiralcarritoMdm.addEventListener("click", aniadirclickeado);
 
+//Ver como no repetir
 aniadiralcarritoKotw2.addEventListener("click", aniadirclickeado);
 
 
@@ -108,6 +109,8 @@ function aniadirclickeado(event) {
     const itemImagen = item.querySelector(".item-imagen").src;
 
     AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen);
+
+
 
 
 }
@@ -283,13 +286,47 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
     ItemEnCarrito.innerHTML = ContenidoCarrito;
     ContenedorItemsCarrito.append(ItemEnCarrito);
 
+
+// LocalStorage
+/*     localStorage.setItem("AniadirItemaCarrito", JSON.stringify(itemTitulo));
+    let productoenLS =JSON.parse(localStorage.getItem("AniadirItemaCarrito"));
+    console.log(productoenLS); */
+
+
     //Boton borrar
     ItemEnCarrito.querySelector(".buttonDelete").addEventListener("click", borraritem);
 
     SumaPreciosCarrito()
 
     AlertaCarrito()
+
+    this.GuardarproductosLS(ContenidoCarrito);
 }
+
+
+// LocalStorage
+
+function GuardarproductosLS(producto){
+    let productos = this.ItemsLS();
+    productos.push(producto)
+    localStorage.setItem("productos", JSON.stringify(productos));
+}
+
+
+function ItemsLS () {
+    var ProductosLS;
+    if(localStorage.getItem("productos")===null){
+        ProductosLS = [];
+        }else{
+            ProductosLS = JSON.parse(localStorage.getItem("productos"));
+        }
+        return ProductosLS;
+}
+
+
+
+
+
 
 function SumaPreciosCarrito() {
     let total = 0;
@@ -325,9 +362,12 @@ ComprarBTN.addEventListener("click", ComprarBTNclickeado)
 //Funcion que borra todo al comprar del Carrito
 function ComprarBTNclickeado() {
     ContenedorItemsCarrito.innerHTML = '';
+    localStorage.clear();
     SumaPreciosCarrito();
     AlertaCarritovacio();
 }
+
+
 
 
 
@@ -577,31 +617,6 @@ punto.forEach((cadaPunto, i) => {
 
 
 
-
-
-// -------- HACER QUE LAS TARJETAS DE LOS CARROUSELES SE DEN VUELTA ------------//
-
-/*
-const elseñordelosanillos = document.getElementById(elseñordelosanillos);
-
-const kingsofthewild = document.getElementById(kingsofthewild);
-
-const eragon = document.getElementById(eragon);
-
-const harrypotter = document.getElementById(harrypotter);
-
-const cronicasdelastorre = document.getElementById(cronicasdelastorre);
-
-const eldemoniodearbenninos = document.getElementById(eldemoniodearbenninos);
-
-const fuegoysangre = document.getElementById(fuegoysangre);
-
-const mareasdemedianoche = document.getElementById(mareasdemedianoche);
-
-
-eragon.addEventListener("click") */
-
-// Agregar el elemmento hiden:  http://chuwiki.chuidiang.org/index.php?title=Cambiar_elementos_al_hacer_click
 
 
 
