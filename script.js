@@ -23,15 +23,6 @@ const libreria = [
     new libro("Piense y hagase rico", "Napoleon Hill", "desarrollo personal", 2300)
 ];
 
-function mostrar(libreria) {
-    let info = "";
-
-    libreria.forEach(elemento => {
-        info += "Titulo: " + elemento.titulo + "\nAutor: " + elemento.autor + "\nPrecio: $" + elemento.precio + ".- \n\n"
-    });
-    return info;
-}
-
 
 
 
@@ -110,30 +101,76 @@ function aniadirclickeado(event) {
 
     AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen);
 
+    const ItemAutor = preciolibroclickeado.autor;
 
+    const ItemGenero = preciolibroclickeado.genero;
+
+    AniadirItemcarritoLS(ItemAutor, ItemGenero, itemPrecio, itemTitulo);
 
 
 }
+
+
+// ------ L O C A L - S T O R A G E ----- //
+function AniadirItemcarritoLS(ItemAutor, ItemGenero, itemPrecio, itemTitulo) {
+
+    class CarritoparaLS {
+        constructor(titulo, autor, genero, precio, cantidad) {
+            this.titulo = titulo;
+            this.autor = autor;
+            this.genero = genero;
+            this.precio = precio;
+            this.cantidad = cantidad;
+        }
+    }
+
+    var Cantidad = 0;
+
+    NuevoItem = new CarritoparaLS(itemTitulo, ItemAutor, ItemGenero, itemPrecio, Cantidad)
+
+    SubirItemLS()
+}
+
+//Array Carrito
+var BasedeDatosCarrito = [];
+function SubirItemLS() {
+    BasedeDatosCarrito.push(NuevoItem);
+
+    // LocalStorage
+    localStorage.setItem("Libro", JSON.stringify(NuevoItem));
+
+
+// Intento que me suba mas de un libro y no q me los cambie
+}
+
+
+// --------------------------------------------- //
+
+
+
+
+
+
 
 //Alerta Carrito
 function AlertaCarrito() {
     const Hayelementosenelcarrito = ContenedorItemsCarrito.querySelector(".item__carrito--texto");
     const BTNalertaCarrito = document.querySelector(".btn_carrito--alerta");
-    
-    Hayelementosenelcarrito.length == 0 ?       BTNalertaCarrito.style.display = "none" :           BTNalertaCarrito.style.display = "block";
-    return 
+
+    Hayelementosenelcarrito.length == 0 ? BTNalertaCarrito.style.display = "none" : BTNalertaCarrito.style.display = "block";
+    return
 };
 //Ver como hacer q desaparesca cuando no hay mas cosas en el carrito
 
 function AlertaCarritovacio() {
     const Hayelementosenelcarrito = ContenedorItemsCarrito.querySelector(".contenedoritems__carrito");
     const BTNalertaCarrito = document.querySelector(".btn_carrito--alerta");
-    
-    if (!Hayelementosenelcarrito.hasChildNodes()){
+
+    if (!Hayelementosenelcarrito.hasChildNodes()) {
         BTNalertaCarrito.style.display = "none";
         return;
     }
-    
+
 } //Cannot read properties of null (reading 'length')
 
 
@@ -171,109 +208,166 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
 
 
 
-    //Evitar Items Repetidos
-    const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName("item__carrito--texto");
 
-    for (let i = 0; i < ItemNOrepetir.length; i++) {
+// ------------------- ALERTA TOAST ----------------- //
 
+  /*   let ContenedorparaToast = chequeaContenido.querySelector(".contenedoritems__carrito");
 
-// Con esta condicion no me toma la Variable "True".
+    for (let i = 0; i < ContenedorparaToast.length; i++) {
 
-        if (!ItemNOrepetir[i].innerHTML.includes(itemTitulo)) {
+        if (!ContenedorparaToast[i].innerHTML.includes(div)) {
             Toastify({
                 text: "Se agrego un producto a tu Carrito",
                 className: "info",
                 duration: "1500",
                 offset: {
                     x: 0,
-                    y: 70 
-                  },
+                    y: 70
+                },
                 style: {
-                  background: "linear-gradient(to right, #00b09b, #96c93d)",
+                    background: "linear-gradient(to right, #00b09b, #96c93d)",
                 }
-              }).showToast();
-        }else{
+            }).showToast();            
+        } 
+    }; */
+
+
+/*     Toastify({
+        text: "Se agrego un producto a tu Carrito",
+        className: "info",
+        duration: "1500",
+        offset: {
+            x: 0,
+            y: 70
+        },
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+    }).showToast();
+} else {
+    Toastify({
+        text: "Este producto ya esta en tu Carrito",
+        className: "info",
+        duration: "1500",
+        offset: {
+            x: 0,
+            y: 70
+        },
+        style: {
+            background: "linear-gradient(to right, #a10000, #c9773d)",
+        }
+    }).showToast(); */
+
+
+    // Alerta Toast
+
+    //Evitar Items Repetidos
+    const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName("item__carrito--texto");
+
+    //const ContenedorparaToast = chequeaContenido.querySelector(".contenedoritems__carrito");
+
+    //si pongo (-1) funciona
+    for (let i = 0; i < ItemNOrepetir.length; i++) {
+
+        if(ItemNOrepetir.length < 1 ){
+            Toastify({
+                text: "Se agrego un producto a tu Carrito",
+                className: "info",
+                duration: "1500",
+                offset: {
+                    x: 0,
+                    y: 70
+                },
+                style: {
+                    background: "linear-gradient(to right, #00b09b, #96c93d)",
+                }
+            }).showToast();
+        }
+        
+        else if (!ItemNOrepetir[i].innerHTML.includes(itemTitulo)) {
+            
+        } else {
             Toastify({
                 text: "Este producto ya esta en tu Carrito",
                 className: "info",
                 duration: "1500",
                 offset: {
                     x: 0,
-                    y: 70 
-                  },
+                    y: 70
+                },
                 style: {
-                  background: "linear-gradient(to right, #a10000, #c9773d)",
+                    background: "linear-gradient(to right, #a10000, #c9773d)",
                 }
-              }).showToast();
-              return
+            }).showToast();
+            return
         }
     };
 
 
     // Operador avanzado "?"
 
-        /* !ItemNOrepetir[i].innerHTML.includes(itemTitulo) ?
-            Toastify({
-                text: "Se agrego un producto a tu Carrito",
-                className: "info",
-                duration: "1500",
-                offset: {
-                    x: 0,
-                    y: 70 
-                  },
-                style: {
-                  background: "linear-gradient(to right, #00b09b, #96c93d)",
-                }
-              }).showToast() 
-              :       
-            Toastify({
-                text: "Este producto ya esta en tu Carrito",
-                className: "info",
-                duration: "1500",
-                offset: {
-                    x: 0,
-                    y: 70 
-                  },
-                style: {
-                  background: "linear-gradient(to right, #a10000, #c9773d)",
-                }
-              }).showToast();
-              return;
-            }}; */
-
-    
-        
-
-        // Do While
-
-/*         do {
-            Toastify({
-                text: "Se agrego un producto a tu Carrito",
-                className: "info",
-                duration: "1500",
-                offset: {
-                    x: 0,
-                    y: 70 
-                  },
-                style: {
-                  background: "linear-gradient(to right, #00b09b, #96c93d)",
-                }
-              }).showToast();
-        } while (ItemNOrepetir[i].innerHTML.includes(itemTitulo)){
-            Toastify({
-                text: "Este producto ya esta en tu Carrito",
-                className: "info",
-                duration: "1500",
-                offset: {
-                    x: 0,
-                    y: 70 
-                  },
-                style: {
-                  background: "linear-gradient(to right, #a10000, #c9773d)",
-                }
-              }).showToast();
-              return
+    /* !ItemNOrepetir[i].innerHTML.includes(itemTitulo) ?
+        Toastify({
+            text: "Se agrego un producto a tu Carrito",
+            className: "info",
+            duration: "1500",
+            offset: {
+                x: 0,
+                y: 70 
+              },
+            style: {
+              background: "linear-gradient(to right, #00b09b, #96c93d)",
+            }
+          }).showToast() 
+          :       
+        Toastify({
+            text: "Este producto ya esta en tu Carrito",
+            className: "info",
+            duration: "1500",
+            offset: {
+                x: 0,
+                y: 70 
+              },
+            style: {
+              background: "linear-gradient(to right, #a10000, #c9773d)",
+            }
+          }).showToast();
+          return;
         }}; */
+
+
+
+
+    // Do While
+
+    /*         do {
+                Toastify({
+                    text: "Se agrego un producto a tu Carrito",
+                    className: "info",
+                    duration: "1500",
+                    offset: {
+                        x: 0,
+                        y: 70 
+                      },
+                    style: {
+                      background: "linear-gradient(to right, #00b09b, #96c93d)",
+                    }
+                  }).showToast();
+            } while (ItemNOrepetir[i].innerHTML.includes(itemTitulo)){
+                Toastify({
+                    text: "Este producto ya esta en tu Carrito",
+                    className: "info",
+                    duration: "1500",
+                    offset: {
+                        x: 0,
+                        y: 70 
+                      },
+                    style: {
+                      background: "linear-gradient(to right, #a10000, #c9773d)",
+                    }
+                  }).showToast();
+                  return
+            }}; */
 
 
 
@@ -287,10 +381,9 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
     ContenedorItemsCarrito.append(ItemEnCarrito);
 
 
-// LocalStorage
-/*     localStorage.setItem("AniadirItemaCarrito", JSON.stringify(itemTitulo));
-    let productoenLS =JSON.parse(localStorage.getItem("AniadirItemaCarrito"));
-    console.log(productoenLS); */
+
+
+
 
 
     //Boton borrar
@@ -300,31 +393,7 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
 
     AlertaCarrito()
 
-    this.GuardarproductosLS(ContenidoCarrito);
 }
-
-
-// LocalStorage
-
-function GuardarproductosLS(producto){
-    let productos = this.ItemsLS();
-    productos.push(producto)
-    localStorage.setItem("productos", JSON.stringify(productos));
-}
-
-
-function ItemsLS () {
-    var ProductosLS;
-    if(localStorage.getItem("productos")===null){
-        ProductosLS = [];
-        }else{
-            ProductosLS = JSON.parse(localStorage.getItem("productos"));
-        }
-        return ProductosLS;
-}
-
-
-
 
 
 
@@ -364,7 +433,7 @@ function ComprarBTNclickeado() {
     ContenedorItemsCarrito.innerHTML = '';
     localStorage.clear();
     SumaPreciosCarrito();
-    AlertaCarritovacio();
+    //AlertaCarritovacio();
 }
 
 
@@ -374,27 +443,7 @@ function ComprarBTNclickeado() {
 
 
 
-// -------------- Hover por JS ---------------- 
-
-// Intento hacer Funcion apra reducir codigo.
-/* function Girar (evento){
-    const imagenagirar = evento.target;
-    imagenagirar.closest('.img').addEventListener("mouseover", ()=> {
-        imagenagirar.style.transform = "rotateY(-180deg)";
-    });
-} */
-
-
-// PORQUE NO ME SELECCIONA TODAS LOS DIVs CON ESTA CLASE?
-
-/* let contenedorglobal = document.querySelector(".contenedor__img");
-contenedorglobal.addEventListener("mouseover", ()=>{
-    contenedorglobal.style.transform = "translate(120px, 50%);"
-}); */
-
-//console.log(contenedorglobal);
-
-
+// -------------- Hover por JS ---------------- //
 
 /*  ----- LOTR ----- */
 
@@ -403,14 +452,14 @@ let Lotr = document.querySelector(".imglotr");
 let Btnoculto = document.querySelector(".btn__lotr");
 let Textooculto = document.querySelector(".text__lotr");
 
-ContainerLotr.addEventListener("mouseover", ()=> {
+ContainerLotr.addEventListener("mouseover", () => {
     Lotr.style.transform = "rotateY(-180deg)";
     Btnoculto.style.display = "block";
     Lotr.style.filter = "blur(2px)";
     Textooculto.style.display = "block";
 });
 
-ContainerLotr.addEventListener("mouseout", ()=> {
+ContainerLotr.addEventListener("mouseout", () => {
     Lotr.style.transform = "rotateY(0deg)";
     Btnoculto.style.display = "none";
     Lotr.style.filter = "blur(0px)";
@@ -426,14 +475,14 @@ let Kotw = document.querySelector(".kingsofthewild");
 let BtnocultoK = document.querySelector(".btn__kotw");
 let TextoocultoK = document.querySelector(".text__kotw");
 
-ContainerKotw.addEventListener("mouseover", ()=> {
+ContainerKotw.addEventListener("mouseover", () => {
     Kotw.style.transform = "rotateY(-180deg)";
     Kotw.style.filter = "blur(2px)";
     BtnocultoK.style.display = "block";
     TextoocultoK.style.display = "block";
 });
 
-ContainerKotw.addEventListener("mouseout", ()=> {
+ContainerKotw.addEventListener("mouseout", () => {
     Kotw.style.transform = "rotateY(0deg)";
     Kotw.style.filter = "blur(0px)";
     BtnocultoK.style.display = "none";
@@ -449,14 +498,14 @@ let Eragon = document.querySelector(".img__eragon");
 let BtnocultoEragon = document.querySelector(".btn__eragon");
 let TextoocultoEragon = document.querySelector(".text__eragon");
 
-ContainerEragon.addEventListener("mouseover", ()=> {
+ContainerEragon.addEventListener("mouseover", () => {
     Eragon.style.transform = "rotateY(-180deg)";
     Eragon.style.filter = "blur(2px)";
     BtnocultoEragon.style.display = "block";
     TextoocultoEragon.style.display = "block";
 });
 
-ContainerEragon.addEventListener("mouseout", ()=> {
+ContainerEragon.addEventListener("mouseout", () => {
     Eragon.style.transform = "rotateY(0deg)";
     Eragon.style.filter = "blur(0px)";
     BtnocultoEragon.style.display = "none";
@@ -472,14 +521,14 @@ let Harrypotter = document.querySelector(".img__hp");
 let BtnocultoHP = document.querySelector(".btn__hp");
 let TextoocultoHP = document.querySelector(".text__hp");
 
-ContainerHP.addEventListener("mouseover", ()=> {
+ContainerHP.addEventListener("mouseover", () => {
     Harrypotter.style.transform = "rotateY(-180deg)";
     Harrypotter.style.filter = "blur(2px)";
     BtnocultoHP.style.display = "block";
     TextoocultoHP.style.display = "block";
 });
 
-ContainerHP.addEventListener("mouseout", ()=> {
+ContainerHP.addEventListener("mouseout", () => {
     Harrypotter.style.transform = "rotateY(0deg)";
     Harrypotter.style.filter = "blur(0px)";
     BtnocultoHP.style.display = "none";
@@ -495,14 +544,14 @@ let Cdlt = document.querySelector(".img__Cdlt");
 let BtnocultoCdlt = document.querySelector(".btn__cdlt");
 let TextoocultoCdlt = document.querySelector(".text__cdlt");
 
-ContainerCdlt.addEventListener("mouseover", ()=> {
+ContainerCdlt.addEventListener("mouseover", () => {
     Cdlt.style.transform = "rotateY(-180deg)";
     Cdlt.style.filter = "blur(2px)";
     BtnocultoCdlt.style.display = "block";
     TextoocultoCdlt.style.display = "block";
 });
 
-ContainerCdlt.addEventListener("mouseout", ()=> {
+ContainerCdlt.addEventListener("mouseout", () => {
     Cdlt.style.transform = "rotateY(0deg)";
     Cdlt.style.filter = "blur(0px)";
     BtnocultoCdlt.style.display = "none";
@@ -519,14 +568,14 @@ let Edda = document.querySelector(".img__edda");
 let BtnocultoEdda = document.querySelector(".btn__edda");
 let TextoocultoEdda = document.querySelector(".text__edda");
 
-ContainerEdda.addEventListener("mouseover", ()=> {
+ContainerEdda.addEventListener("mouseover", () => {
     Edda.style.transform = "rotateY(-180deg)";
     Edda.style.filter = "blur(2px)";
     BtnocultoEdda.style.display = "block";
     TextoocultoEdda.style.display = "block";
 });
 
-ContainerEdda.addEventListener("mouseout", ()=> {
+ContainerEdda.addEventListener("mouseout", () => {
     Edda.style.transform = "rotateY(0deg)";
     Edda.style.filter = "blur(0px)";
     BtnocultoEdda.style.display = "none";
@@ -543,14 +592,14 @@ let Fys = document.querySelector(".img__fys");
 let BtnocultoFys = document.querySelector(".btn__fys");
 let TextoocultoFys = document.querySelector(".text__fys");
 
-ContainerFys.addEventListener("mouseover", ()=> {
+ContainerFys.addEventListener("mouseover", () => {
     Fys.style.transform = "rotateY(-180deg)";
     Fys.style.filter = "blur(2px)";
     BtnocultoFys.style.display = "block";
     TextoocultoFys.style.display = "block";
 });
 
-ContainerFys.addEventListener("mouseout", ()=> {
+ContainerFys.addEventListener("mouseout", () => {
     Fys.style.transform = "rotateY(0deg)";
     Fys.style.filter = "blur(0px)";
     BtnocultoFys.style.display = "none";
@@ -566,19 +615,21 @@ let Mdm = document.querySelector(".img__mdm");
 let BtnocultoMdm = document.querySelector(".btn__mdm");
 let TextoocultoMdm = document.querySelector(".text__mdm");
 
-ContainerMdm.addEventListener("mouseover", ()=> {
+ContainerMdm.addEventListener("mouseover", () => {
     Mdm.style.transform = "rotateY(-180deg)";
     Mdm.style.filter = "blur(2px)";
     BtnocultoMdm.style.display = "block";
     TextoocultoMdm.style.display = "block";
 });
 
-ContainerMdm.addEventListener("mouseout", ()=> {
+ContainerMdm.addEventListener("mouseout", () => {
     Mdm.style.transform = "rotateY(0deg)";
     Mdm.style.filter = "blur(0px)";
     BtnocultoMdm.style.display = "none";
     TextoocultoMdm.style.display = "none";
 });
+
+// -------------------------------------------------------------- //
 
 
 
