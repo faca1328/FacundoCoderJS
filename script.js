@@ -1,3 +1,5 @@
+/* const { NULL } = require("node-sass"); */
+
 class libro {
 
     constructor(titulo, autor, genero, precio) {
@@ -82,6 +84,9 @@ aniadiralcarritoMdm.addEventListener("click", aniadirclickeado);
 aniadiralcarritoKotw2.addEventListener("click", aniadirclickeado);
 
 
+// ------ L O C A L - S T O R A G E ----- //
+const BasedeDatosCarrito = [];
+
 
 function aniadirclickeado(event) {
     const button = event.target;
@@ -95,57 +100,45 @@ function aniadirclickeado(event) {
 
     const itemPrecio = parseInt(preciolibroclickeado.precio);
 
-
     //Imagen
     const itemImagen = item.querySelector(".item-imagen").src;
 
-    AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen);
 
-    const ItemAutor = preciolibroclickeado.autor;
+    //Encontrar libro para Local Storage
+    const LibroEncontrado = libreria.find((elemento => elemento.titulo == itemTitulo))
 
-    const ItemGenero = preciolibroclickeado.genero;
+    //LibroEncontrado.cantidad=1;
 
-    AniadirItemcarritoLS(ItemAutor, ItemGenero, itemPrecio, itemTitulo);
-
-
-}
+    // -- USAR IF PARA Q NO SE REPITA -- //
+    const ItemNOrepetir2 = ContenedorItemsCarrito.getElementsByClassName("item__carrito--texto");
 
 
-// ------ L O C A L - S T O R A G E ----- //
-function AniadirItemcarritoLS(ItemAutor, ItemGenero, itemPrecio, itemTitulo) {
-
-    class CarritoparaLS {
-        constructor(titulo, autor, genero, precio, cantidad) {
-            this.titulo = titulo;
-            this.autor = autor;
-            this.genero = genero;
-            this.precio = precio;
-            this.cantidad = cantidad;
+    for (let i = 0; i < ItemNOrepetir2.length; i++){
+        if (ItemNOrepetir2.length !== itemTitulo)
+        //(!ItemNOrepetir2[i].innerHTML.includes(itemTitulo))
+        {
+            BasedeDatosCarrito.push(LibroEncontrado);
+        }else{
+            return;
         }
     }
 
-    var Cantidad = 0;
+    /* if (ItemNOrepetir2 !== itemTitulo){
+        BasedeDatosCarrito.push(LibroEncontrado);
+    }else{
+        return;
+    }; */
+    
 
-    NuevoItem = new CarritoparaLS(itemTitulo, ItemAutor, ItemGenero, itemPrecio, Cantidad)
+    localStorage.setItem("libro",JSON.stringify(BasedeDatosCarrito));
 
-    SubirItemLS()
+
+    AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen);
 }
 
-//Array Carrito
-var BasedeDatosCarrito = [];
-function SubirItemLS() {
-    BasedeDatosCarrito.push(NuevoItem);
-
-    // LocalStorage
-    localStorage.setItem("Libro", JSON.stringify(NuevoItem));
-
-
-// Intento que me suba mas de un libro y no q me los cambie
-}
 
 
 // --------------------------------------------- //
-
 
 
 
@@ -158,64 +151,29 @@ function AlertaCarrito() {
     const BTNalertaCarrito = document.querySelector(".btn_carrito--alerta");
 
     Hayelementosenelcarrito.length == 0 ? BTNalertaCarrito.style.display = "none" : BTNalertaCarrito.style.display = "block";
-    return
 };
-//Ver como hacer q desaparesca cuando no hay mas cosas en el carrito
 
 function AlertaCarritovacio() {
-    const Hayelementosenelcarrito = ContenedorItemsCarrito.querySelector(".contenedoritems__carrito");
-    const BTNalertaCarrito = document.querySelector(".btn_carrito--alerta");
+    const Hayelementosenelcarrito2 = ContenedorItemsCarrito.querySelector(".item__carrito--texto");
+    const BTNalertaCarrito2 = document.querySelector(".btn_carrito--alerta");
 
-    if (!Hayelementosenelcarrito.hasChildNodes()) {
-        BTNalertaCarrito.style.display = "none";
-        return;
+    if (Hayelementosenelcarrito2 === null){
+        BTNalertaCarrito2.style.display = "none"
     }
-
-} //Cannot read properties of null (reading 'length')
-
-
-// ---- Segundo Intento con .hasChildNodes() y llamando al Contenedor
-
-/*   function AlertaCarrito() {
-        const Hayelementosenelcarrito = ContenedorItemsCarrito.querySelector(".contenedoritems__carrito");
-        const BTNalertaCarrito = document.querySelector(".btn_carrito--alerta");
-
-        Hayelementosenelcarrito.hasChildNodes() ? BTNalertaCarrito.style.display = "block" : BTNalertaCarrito.style.display = "none";
-        return
-    };
-    //Ver como hacer q desaparesca cuando no hay mas cosas en el carrito
-
- function AlertaCarritovacio() {
-        const Hayelementosenelcarrito = ContenedorItemsCarrito.querySelector(".contenedoritems__carrito");
-        const BTNalertaCarrito = document.querySelector(".btn_carrito--alerta");
-        
-        if (!Hayelementosenelcarrito.hasChildNodes()){
-            BTNalertaCarrito.style.display = "none";
-            return;
-        }
-        
-    }  */
-
-
-
-
-
-
+}; 
 
 
 
 function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
 
-
-
-
 // ------------------- ALERTA TOAST ----------------- //
 
-  /*   let ContenedorparaToast = chequeaContenido.querySelector(".contenedoritems__carrito");
+    //Evitar Items Repetidos
+    const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName("item__carrito--texto");
 
-    for (let i = 0; i < ContenedorparaToast.length; i++) {
+    for (let i = 0; i < ItemNOrepetir.length; i++) {
 
-        if (!ContenedorparaToast[i].innerHTML.includes(div)) {
+        if (!ItemNOrepetir[i].innerHTML.includes(itemTitulo)) {
             Toastify({
                 text: "Se agrego un producto a tu Carrito",
                 className: "info",
@@ -228,64 +186,6 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
                     background: "linear-gradient(to right, #00b09b, #96c93d)",
                 }
             }).showToast();            
-        } 
-    }; */
-
-
-/*     Toastify({
-        text: "Se agrego un producto a tu Carrito",
-        className: "info",
-        duration: "1500",
-        offset: {
-            x: 0,
-            y: 70
-        },
-        style: {
-            background: "linear-gradient(to right, #00b09b, #96c93d)",
-        }
-    }).showToast();
-} else {
-    Toastify({
-        text: "Este producto ya esta en tu Carrito",
-        className: "info",
-        duration: "1500",
-        offset: {
-            x: 0,
-            y: 70
-        },
-        style: {
-            background: "linear-gradient(to right, #a10000, #c9773d)",
-        }
-    }).showToast(); */
-
-
-    // Alerta Toast
-
-    //Evitar Items Repetidos
-    const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName("item__carrito--texto");
-
-    //const ContenedorparaToast = chequeaContenido.querySelector(".contenedoritems__carrito");
-
-    //si pongo (-1) funciona
-    for (let i = 0; i < ItemNOrepetir.length; i++) {
-
-        if(ItemNOrepetir.length < 1 ){
-            Toastify({
-                text: "Se agrego un producto a tu Carrito",
-                className: "info",
-                duration: "1500",
-                offset: {
-                    x: 0,
-                    y: 70
-                },
-                style: {
-                    background: "linear-gradient(to right, #00b09b, #96c93d)",
-                }
-            }).showToast();
-        }
-        
-        else if (!ItemNOrepetir[i].innerHTML.includes(itemTitulo)) {
-            
         } else {
             Toastify({
                 text: "Este producto ya esta en tu Carrito",
@@ -304,40 +204,6 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
     };
 
 
-    // Operador avanzado "?"
-
-    /* !ItemNOrepetir[i].innerHTML.includes(itemTitulo) ?
-        Toastify({
-            text: "Se agrego un producto a tu Carrito",
-            className: "info",
-            duration: "1500",
-            offset: {
-                x: 0,
-                y: 70 
-              },
-            style: {
-              background: "linear-gradient(to right, #00b09b, #96c93d)",
-            }
-          }).showToast() 
-          :       
-        Toastify({
-            text: "Este producto ya esta en tu Carrito",
-            className: "info",
-            duration: "1500",
-            offset: {
-                x: 0,
-                y: 70 
-              },
-            style: {
-              background: "linear-gradient(to right, #a10000, #c9773d)",
-            }
-          }).showToast();
-          return;
-        }}; */
-
-
-
-
     // Do While
 
     /*         do {
@@ -353,7 +219,7 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
                       background: "linear-gradient(to right, #00b09b, #96c93d)",
                     }
                   }).showToast();
-            } while (ItemNOrepetir[i].innerHTML.includes(itemTitulo)){
+            } while (!ItemNOrepetir[i].innerHTML.includes(itemTitulo)){
                 Toastify({
                     text: "Este producto ya esta en tu Carrito",
                     className: "info",
@@ -376,14 +242,9 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
     //Agregar un Item con codigo HTML
     const ItemEnCarrito = document.createElement('div');
     const ContenidoCarrito =
-        `<div class="item__carrito--contenedor">    <img src= ${itemImagen} class="item__carrito--imagen">    <div class="item__carrito--texto">    <h6>${itemTitulo}</h6>      <p class="precio__item">$ ${itemPrecio}</p>    </div>    <button class="btn btn-danger buttonDelete" type="button">X</button>  </div>`;
+        `<div class="item__carrito--contenedor">    <img src= ${itemImagen} class="item__carrito--imagen">    <div class="item__carrito--texto">    <h6 class = "titulols">${itemTitulo}</h6>      <p class="precio__item">$ ${itemPrecio}</p>    </div>    <button class="btn btn-danger buttonDelete" type="button">X</button>  </div>`;
     ItemEnCarrito.innerHTML = ContenidoCarrito;
     ContenedorItemsCarrito.append(ItemEnCarrito);
-
-
-
-
-
 
 
     //Boton borrar
@@ -394,7 +255,6 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
     AlertaCarrito()
 
 }
-
 
 
 function SumaPreciosCarrito() {
@@ -418,24 +278,47 @@ function SumaPreciosCarrito() {
 
 //Funcion ´Boton Borrar´ 1 item
 function borraritem(evento) {
+    const itemTituloborrar = document.querySelector(".titulols").textContent;
+    //obtengo datos
+    JSON.parse(localStorage.getItem(BasedeDatosCarrito));
+    //encuentro el dato a borrar
+    let Objetoaborrarls = BasedeDatosCarrito.findIndex(elemento => elemento.titulo == itemTituloborrar);
+    //lo borro
+    BasedeDatosCarrito.splice(Objetoaborrarls,1);
+    //rarmo los datos
+    JSON.stringify(BasedeDatosCarrito);
+    //Actualizo LS
+    localStorage.setItem("libro",JSON.stringify(BasedeDatosCarrito));
+
+
     const clickbotonborrar = evento.target;
     clickbotonborrar.closest('.item__carrito--contenedor').remove();
+   
     SumaPreciosCarrito()
     AlertaCarritovacio()
 }
+
+
+
+
 
 
 //Boton Compra del Carrito
 const ComprarBTN = document.querySelector(".btn__compra");
 ComprarBTN.addEventListener("click", ComprarBTNclickeado)
 //Funcion que borra todo al comprar del Carrito
-function ComprarBTNclickeado() {
+function ComprarBTNclickeado() {  
     ContenedorItemsCarrito.innerHTML = '';
     localStorage.clear();
     SumaPreciosCarrito();
-    //AlertaCarritovacio();
-}
 
+    Swal.fire(
+        'Felicitaciones!',
+        'Tu compra fue realizada con exito.',
+        'success'
+      )
+    AlertaCarritovacio();
+}
 
 
 
@@ -765,3 +648,82 @@ let caballoblanco;
     } while (caballoblanco != "blanco" );
 
  */
+
+
+
+/* ----------     Codigos "Mal Usados"    ----------- */
+
+
+/*     const ItemAutor = preciolibroclickeado.autor;
+
+    const ItemGenero = preciolibroclickeado.genero;
+
+    AniadirItemcarritoLS(ItemAutor, ItemGenero, itemPrecio, itemTitulo); */
+
+
+
+// ------ L O C A L - S T O R A G E ----- //
+/* function AniadirItemcarritoLS(ItemAutor, ItemGenero, itemPrecio, itemTitulo) {
+
+    class CarritoparaLS {
+        constructor(titulo, autor, genero, precio, cantidad) {
+            this.titulo = titulo;
+            this.autor = autor;
+            this.genero = genero;
+            this.precio = precio;
+            this.cantidad = cantidad;
+        }
+    }
+
+     Cantidad = 0;
+
+    NuevoItem = new CarritoparaLS(itemTitulo, ItemAutor, ItemGenero, itemPrecio, Cantidad)
+
+    SubirItemLS()
+} */
+
+//Array Carrito
+/*  BasedeDatosCarrito = [];
+function SubirItemLS() {
+    BasedeDatosCarrito.push(NuevoItem);
+
+    // LocalStorage
+    localStorage.setItem("Libro", JSON.stringify(BasedeDatosCarrito));
+
+
+// Intento que me suba mas de un libro y no q me los cambie
+} */
+
+ 
+//------------------------ borrar un item de LS ------------//
+
+
+//let objetosdelarray = JSON.parse(localStorage.getItem("libro"));
+
+/* let objetosdelarray = JSON.parse(localStorage.getItem("libro"));
+
+objetosdelarray.filter(elemento => elemento.titulo == itemTituloborrar); */
+
+    /* //obtengo datos
+    let objetosdelarray = JSON.parse(localStorage.getItem("libro"));
+    //encuentro el dato a borrar
+    let Objetoaborrarls = objetosdelarray.findIndex(elemento => elemento.titulo == itemTituloborrar);
+    //lo borro
+    objetosdelarray.splice(Objetoaborrarls,1);
+    //rarmo los datos
+    let objetosdelarrayTerminado = JSON.stringify(objetosdelarray);
+    //Actualizo base de datos y LS
+    BasedeDatosCarrito.push(objetosdelarrayTerminado);
+    localStorage.setItem("libro",JSON.stringify(BasedeDatosCarrito)); */
+
+
+
+    // Borro un item Especifico del Local Storage
+/* function borraritemLS (){
+    let objetosdelarray = JSON.parse(localStorage.getItem(BasedeDatosCarrito));
+    objetosdelarray.filter((elemento => elemento.titulo == itemTituloborrar));
+    console.log(objetosdelarray);
+
+} */
+
+
