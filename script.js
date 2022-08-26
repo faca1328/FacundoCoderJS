@@ -1,4 +1,3 @@
-/* const { NULL } = require("node-sass"); */
 
 class libro {
 
@@ -107,27 +106,13 @@ function aniadirclickeado(event) {
     //Encontrar libro para Local Storage
     const LibroEncontrado = libreria.find((elemento => elemento.titulo == itemTitulo))
 
-    //LibroEncontrado.cantidad=1;
-
-    // -- USAR IF PARA Q NO SE REPITA -- //
-    const ItemNOrepetir2 = ContenedorItemsCarrito.getElementsByClassName("item__carrito--texto");
-
-
-    for (let i = 0; i < ItemNOrepetir2.length; i++){
-        if (ItemNOrepetir2.length !== itemTitulo)
-        //(!ItemNOrepetir2[i].innerHTML.includes(itemTitulo))
+    
+    if (!BasedeDatosCarrito.find(elemento => elemento.titulo === itemTitulo))
         {
             BasedeDatosCarrito.push(LibroEncontrado);
-        }else{
-            return;
-        }
-    }
+        };
+    
 
-    /* if (ItemNOrepetir2 !== itemTitulo){
-        BasedeDatosCarrito.push(LibroEncontrado);
-    }else{
-        return;
-    }; */
     
 
     localStorage.setItem("libro",JSON.stringify(BasedeDatosCarrito));
@@ -171,22 +156,26 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
     //Evitar Items Repetidos
     const ItemNOrepetir = ContenedorItemsCarrito.getElementsByClassName("item__carrito--texto");
 
+    if (ItemNOrepetir.length === 0){
+        Toastify({
+            text: "Se agrego un producto a tu Carrito",
+            className: "info",
+            duration: "1500",
+            offset: {
+                x: 0,
+                y: 70
+            },
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            }
+        }).showToast();     
+        
+    }
+    
+
     for (let i = 0; i < ItemNOrepetir.length; i++) {
 
-        if (!ItemNOrepetir[i].innerHTML.includes(itemTitulo)) {
-            Toastify({
-                text: "Se agrego un producto a tu Carrito",
-                className: "info",
-                duration: "1500",
-                offset: {
-                    x: 0,
-                    y: 70
-                },
-                style: {
-                    background: "linear-gradient(to right, #00b09b, #96c93d)",
-                }
-            }).showToast();            
-        } else {
+        if (ItemNOrepetir[i].innerHTML.includes(itemTitulo)) {
             Toastify({
                 text: "Este producto ya esta en tu Carrito",
                 className: "info",
@@ -200,43 +189,9 @@ function AniadirItemaCarrito(itemTitulo, itemPrecio, itemImagen) {
                 }
             }).showToast();
             return
-        }
+            
+        } 
     };
-
-
-    // Do While
-
-    /*         do {
-                Toastify({
-                    text: "Se agrego un producto a tu Carrito",
-                    className: "info",
-                    duration: "1500",
-                    offset: {
-                        x: 0,
-                        y: 70 
-                      },
-                    style: {
-                      background: "linear-gradient(to right, #00b09b, #96c93d)",
-                    }
-                  }).showToast();
-            } while (!ItemNOrepetir[i].innerHTML.includes(itemTitulo)){
-                Toastify({
-                    text: "Este producto ya esta en tu Carrito",
-                    className: "info",
-                    duration: "1500",
-                    offset: {
-                        x: 0,
-                        y: 70 
-                      },
-                    style: {
-                      background: "linear-gradient(to right, #a10000, #c9773d)",
-                    }
-                  }).showToast();
-                  return
-            }}; */
-
-
-
 
 
     //Agregar un Item con codigo HTML
@@ -545,185 +500,5 @@ punto.forEach((cadaPunto, i) => {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//----------------------------------- E N T R E G A S ----------------------------------------------//
-
-
-
-// Entrega 18/07
-/* 
-let buscar = true;
-
-while (buscar){
-    let buscador = prompt("ingresa el genero que mas te guste (fantasia o desarrollo personal) para ver nuestro catalogo. \nPara salir ingresar: x");
-
-    if(buscador.toLowerCase()== "x"){
-        buscar=false;
-        break;}
-
-    switch(buscador.toLowerCase()){
-        case "fantasia" :
-            const filtrado=libreria.filter(elemento => elemento.genero == "fantasia");
-            alert(mostrar(filtrado));
-            break;
-
-        case "desarrollo personal" :
-            const filtrado2=libreria.filter(elemento => elemento.genero == "desarrollo personal");
-            alert(mostrar(filtrado2));
-            break;
-
-        default:
-            alert("elegir entre el genero ¨fantasia¨ o ¨desarrollo personal¨ ");
-            break; 
-    }
-
-    
-} */
-
-
-
-
-/* --------   Codigo de entregas anteriores 17/7/22    ----------- */
-
-/* 
-let nombreusuario = prompt("ingresa tu Nombre")
-
-alert("Bienvenido/a " + nombreusuario)
-
-let password = false
-
-for (let i = 2; i >= 0; i--) {
-    let userpassword = prompt("busca tu password de 4 digitos (9080)");
-    if (userpassword == 9080) {
-        alert("Bien! sigamos")
-        password = true
-        break;
-    }
-    else {
-        alert("Sigue buscando te quedan " + i + " intentos.")
-    }
-
-}
-
-
-if (!password) {
-    alert("Bueno sigamos igual, no vamos a ser mala onda :)")
-}
-
-let caballoblanco;
-
-    do {caballoblanco = prompt("De que color es el caballo blanco de San Martin ?" + "\nTe dejo opciones para que no sea tan dificil!" + "\n 1) negro  2) blanco  3) cian");
-
-        switch (caballoblanco) {
-        case "negro" :
-            alert("cerca pero no");
-            break;
-
-        case "blanco" :
-            alert("correcto !");
-            break;
-
-        case "cian" :
-            alert("really? un caballo cian?");
-            break;
-
-        default:
-            alert("Error");
-            break; 
-        }
-    } while (caballoblanco != "blanco" );
-
- */
-
-
-
-/* ----------     Codigos "Mal Usados"    ----------- */
-
-
-/*     const ItemAutor = preciolibroclickeado.autor;
-
-    const ItemGenero = preciolibroclickeado.genero;
-
-    AniadirItemcarritoLS(ItemAutor, ItemGenero, itemPrecio, itemTitulo); */
-
-
-
-// ------ L O C A L - S T O R A G E ----- //
-/* function AniadirItemcarritoLS(ItemAutor, ItemGenero, itemPrecio, itemTitulo) {
-
-    class CarritoparaLS {
-        constructor(titulo, autor, genero, precio, cantidad) {
-            this.titulo = titulo;
-            this.autor = autor;
-            this.genero = genero;
-            this.precio = precio;
-            this.cantidad = cantidad;
-        }
-    }
-
-     Cantidad = 0;
-
-    NuevoItem = new CarritoparaLS(itemTitulo, ItemAutor, ItemGenero, itemPrecio, Cantidad)
-
-    SubirItemLS()
-} */
-
-//Array Carrito
-/*  BasedeDatosCarrito = [];
-function SubirItemLS() {
-    BasedeDatosCarrito.push(NuevoItem);
-
-    // LocalStorage
-    localStorage.setItem("Libro", JSON.stringify(BasedeDatosCarrito));
-
-
-// Intento que me suba mas de un libro y no q me los cambie
-} */
-
- 
-//------------------------ borrar un item de LS ------------//
-
-
-//let objetosdelarray = JSON.parse(localStorage.getItem("libro"));
-
-/* let objetosdelarray = JSON.parse(localStorage.getItem("libro"));
-
-objetosdelarray.filter(elemento => elemento.titulo == itemTituloborrar); */
-
-    /* //obtengo datos
-    let objetosdelarray = JSON.parse(localStorage.getItem("libro"));
-    //encuentro el dato a borrar
-    let Objetoaborrarls = objetosdelarray.findIndex(elemento => elemento.titulo == itemTituloborrar);
-    //lo borro
-    objetosdelarray.splice(Objetoaborrarls,1);
-    //rarmo los datos
-    let objetosdelarrayTerminado = JSON.stringify(objetosdelarray);
-    //Actualizo base de datos y LS
-    BasedeDatosCarrito.push(objetosdelarrayTerminado);
-    localStorage.setItem("libro",JSON.stringify(BasedeDatosCarrito)); */
-
-
-
-    // Borro un item Especifico del Local Storage
-/* function borraritemLS (){
-    let objetosdelarray = JSON.parse(localStorage.getItem(BasedeDatosCarrito));
-    objetosdelarray.filter((elemento => elemento.titulo == itemTituloborrar));
-    console.log(objetosdelarray);
-
-} */
 
 
