@@ -41,7 +41,6 @@ const aniadiralcarritoHpyecdf = document.querySelector(".btnhpyecdf");
 
 const aniadiralcarritoLotr = document.querySelector(".btn__lotr");
 
-//se pueden agregar dos clases a un mismo elemento?
 const aniadiralcarritoKotw2 = document.querySelector(".btn__kotw");
 
 const aniadiralcarritoEragon = document.querySelector(".btn__eragon");
@@ -79,7 +78,6 @@ aniadiralcarritoFys.addEventListener("click", aniadirclickeado);
 
 aniadiralcarritoMdm.addEventListener("click", aniadirclickeado);
 
-//Ver como no repetir
 aniadiralcarritoKotw2.addEventListener("click", aniadirclickeado);
 
 
